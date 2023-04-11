@@ -1,42 +1,49 @@
 # Programa: Vending Machine
-# Autor: Rafael Galafassi
+# Autor: Rafael Galafassi, Vinicius Costa, Marcos Vincius e Vinicius Viana
 # Data de criação: 07/04/2023
 # Descrição: Programa que simula uma máquina de vendas.
+# Observação: Números, pontos e ENTER serão as únicas formas de entrada pelos usuários.
 
+# Declara as variáveis que serão utilizadas no programa
+troco = 0
+qtdeProduto1 = 0
+qtdeProduto1Vendido = 0
+valorCompra = 0
+totalCedulas = 0
+totalMoedas = 0
+novoTotalCedulas = 0
+
+# inicializa o loop continuo do programa
 while True:
-    # Exibe mensagem de boas-vindas
+    # Exibe mensagem de boas-vindas e recebe o dado do tipo de usuário
+    print("------------------------------------------------------------")
     print("Bem-vindo(a) à máquina de Refrigerantes!")
+    print("------------------------------------------------------------")
     print("Digite o tipo de usuário que você é:")
 
-    usuario = input("ADMINISTRADOR OU CONSUMIDOR: ")
+    usuario = input("\n1) ADMINISTRADOR\n2) CONSUMIDOR\n")
 
-    # Verifica se o tipo de usuário é válido e exibe mensagem
-    if usuario == "ADMINISTRADOR" or usuario == "CONSUMIDOR":
-        print(f"Ok, você entrou como {usuario}")
+    # Verifica se o tipo de usuário é válido e exibe uma resposta
+    print("------------------------------------------------------------")
+    if usuario == "1" or usuario == "2":
+        print(f"Ok, você entrou como usuário {usuario}")
     else:
-        print("Entrada inválida tente novamente")
+        print("Usuário inválido, tente novamente")
         continue
-
-    # Inicializa as variáveis que serão utilizadas na operação
-    troco = 0
-    qtdeProduto1 = 0
-    qtdeProduto1Vendido = 0
-    valorCompra = 0
-    totalCedulas = 0
-    totalMoedas = 0
-    novoTotalCedulas = 0
-
-    if usuario == "ADMINISTRADOR":
-        # Se o usuário for administrador, solicita a senha para habilitar o sistema
+    print("------------------------------------------------------------")
+    # Se o usuário for administrador habilita as funcionalidades para gerenciar a máquina
+    if usuario == "1":
+        # solicita a senha para habilitar o sistema
         senha = int(input("Digite a senha para habilitar o sistema: "))
         if senha == 1234:
             # Exibe as opções disponíveis para o administrador
-            print("Selecione a opção (1) para atualizar o troco na máquina ou (2) para atualizar o estoque de produtos ou (3) para ver a quantidade de dinheiro das vendas: ")
-            dinheiro = input(
-                "1) Atualizar troco ou 2) Atualizar estoque de produtos ou 3) Valor das vendas: ")
-            # Se a opção selecionada for atualizar o troco na máquina
-            if dinheiro == "1":
+            print("------------------------------------------------------------")
+            opcaoAdm = input(
+                "Selecione a opção:\n(1) para atualizar o troco na máquina\n(2) para atualizar o estoque de produtos\n(3) para ver a quantidade de dinheiro das vendas\n")
+            # Se a opção selecionada for equivalente a 1, o troco será atualizado por tipo e quantidade.
+            if opcaoAdm == "1":
                 # Solicita a quantidade de cédulas de cada valor e atualiza o total em dinheiro da máquina
+                print("------------------------------------------------------------")
                 print("Digite a quantidade de cédulas")
                 qtdeCedulas2 = int(
                     input("Digite a quantidade de notas de 2: "))
@@ -60,6 +67,7 @@ while True:
                 print(
                     f"O total de dinheiro em cedulas na máquina é de R${totalCedulas}")
                 # Solicita a quantidade de moedas de cada valor e atualiza o total em dinheiro da máquina
+                print("------------------------------------------------------------")
                 print("Digite a quantidade de moedas")
                 qtdeMoedas5 = int(
                     input("Digite a quantidade de moedas de 5 centavos: "))
@@ -87,29 +95,38 @@ while True:
                 print(
                     f"O total de dinheiro em moedas na máquina é de R${totalMoedas:.2f}")
                 # Atualiza a quantidade de troco disponível na máquina
+                print("------------------------------------------------------------")
                 novo_troco = (totalCedulas + totalMoedas)
                 print(f"O total de troco na máquina é de R${novo_troco:.2f}")
                 troco = novo_troco
                 print("Troco atualizado com sucesso!")
-            # Atualiza o estoque da máquina
-            elif dinheiro == "2":
-                print(qtdeProduto1)
+                print("------------------------------------------------------------")
+            # Se a opção selecionada for equivalente a 2, o estoque será atualizado por tipo e quantidade de produtos disponíveis.
+            elif opcaoAdm == "2":
+                print("------------------------------------------------------------")
+                print(
+                    "A quantidade de unidade(s) de Coca-Cola atual em estoque é igual a: ", qtdeProduto1)
+                print("------------------------------------------------------------")
                 novaQtdeProduto1 = int(
-                    input("Adicione mais unidades de Coca-Cola ao estoque:"))
+                    input("Adicione mais unidade(s) de Coca-Cola ao estoque: "))
                 qtdeProduto1 = novaQtdeProduto1
-            # Verifica o valor recebido das vendas durante o funcionamento da máquina
-            elif dinheiro == "3":
-                print("O valor recebido das vendas do produto 1 é igual a: R$",
+                print("Estoque atualizado com sucesso!")
+                print("------------------------------------------------------------")
+            # Verifica o valor recebido das vendas por produto e valor total durante o funcionamento da máquina
+            elif opcaoAdm == "3":
+                print("O valor recebido das vendas de Coca-Cola é igual a: R$",
                       (qtdeProduto1Vendido*4))
-            # Verifica se usuario selecionou uma opção válida
+                print("O valor total das vendas é igual a: R$",
+                      (qtdeProduto1Vendido*4))
+            # Verifica se usuario selecionou uma opção válida de entrada, caso contrário retorna ao início do loop
             else:
-                print("Opção inválida digite novamente")
+                print("Opção inválida, tente novamente")
                 continue
         else:
-            print("Senha inválida")
+            print("Senha inválida, tente novamente")
             continue
-    # Verifica se o usuário é consumidor
-    elif usuario == "CONSUMIDOR":
+    # Se o usuário for consumidor habilita as funcionalidades para realizar as compras
+    elif usuario == "2":
         # Apresenta informações de pagamento e produtos disponíveis
         print("Selecione o produto que deseja comprar, somente cédulas até R$20 e/ou moedas são aceitas para efetuar o pagamento.")
         produto = input("1) Coca-Cola R$ 4.00: ")
@@ -122,15 +139,15 @@ while True:
                 print(
                     f"Infelizmente só temos {qtdeProduto1} unidades desse produto, tente novamente.")
                 continue
-            # Se tiver estoque mostra o valor toral da compra ao consumidor
+            # Se tiver estoque mostra o valor total da compra ao consumidor
             else:
                 qtdeProduto1Vendido = (
                     int(qtdeProduto1) - int(qtdeCompraProduto1))
                 valorCompra = (4 * qtdeCompraProduto1)
                 print(
-                    f"O total do valor da compra ficou igual a: R${valorCompra:.2f}")
+                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
         else:
-            print("Entrada inválida, tente novamente")
+            print("Opção inválida, tente novamente")
             continue
         # Apresenta as formas de pagamento ao consumidor
         print("Selecione as formas de pagamento abaixo:")
@@ -230,13 +247,16 @@ while True:
             print("Opção inválida, tente novamente")
             continue
     # Mostra mensagem de agradecimento, finaliza a compra e pede se o consumidor quer realizar outra ou encerra o programa
-    print("Obrigado por utilizar nossa máquina de refrigerantes")
-    continuar = input("Deseja realizar outra compra? (SIM ou NÃO): ")
-    if continuar == "SIM":
+    print("Obrigado por utilizar nossa máquina de refrigerantes!")
+    print("------------------------------------------------------------")
+
+    continuar = input("Deseja realizar outra operação? (1) SIM ou (2) NÃO: ")
+    if continuar == "1":
         print("Ok, vamos fazer outra compra!")
-    elif continuar == "NÃO":
+    elif continuar == "2":
         print("Obrigado por utilizar nosso programa!")
         break
     # Verifica se a opção é válida
     else:
-        print("Opção inválida. Digite 'SIM' para continuar ou 'NÃO' para sair.")
+        print("Opção inválida. Digite (1) para continuar ou (2) para sair.")
+    print("------------------------------------------------------------")
