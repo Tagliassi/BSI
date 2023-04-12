@@ -5,9 +5,17 @@
 # Observação: Números, pontos e ENTER serão as únicas formas de entrada pelos usuários.
 
 # Declara as variáveis que serão utilizadas no programa.
+# Produtos
+qtdeProdutoAgua = 0
+qtdeProdutoAguaVendido = 0
+qtdeProdutoCha = 0
+qtdeProdutoChaVendido = 0
+qtdeProdutoGuarana = 0
+qtdeProdutoGuaranaVendido = 0
+qtdeProdutoCoca = 0
+qtdeProdutoCocaVendido = 0
+# Dados
 troco = 0
-qtdeProduto1 = 0
-qtdeProduto1Vendido = 0
 valorCompra = 0
 totalCedulas = 0
 totalMoedas = 0
@@ -107,20 +115,48 @@ while True:
         # Se a opção selecionada for equivalente a 2, o estoque será atualizado por tipo e quantidade de produtos disponíveis.
         elif opcaoAdm == "2":
             print("------------------------------------------------------------")
+            # Coca
             print(
-                "A quantidade de unidade(s) de Coca-Cola atual em estoque é igual a: ", qtdeProduto1)
+                "A quantidade de unidade(s) de Coca-Cola atual em estoque é igual a: ", qtdeProdutoCoca)
             print("------------------------------------------------------------")
-            novaQtdeProduto1 = int(
+            novaqtdeProdutoCoca = int(
                 input("Adicione mais unidade(s) de Coca-Cola ao estoque: "))
-            qtdeProduto1 = novaQtdeProduto1
+            qtdeProdutoCoca = novaqtdeProdutoCoca
+            # Guaraná
+            print("A quantidade de unidade(s) de Guaraná atual em estoque é igual a: ",
+                  qtdeProdutoGuarana)
+            print("------------------------------------------------------------")
+            novaqtdeProdutoGuarana = int(
+                input("Adicione mais unidade(s) de Guaraná ao estoque: "))
+            qtdeProdutoGuarana = novaqtdeProdutoGuarana
+            # Chá
+            print(
+                "A quantidade de unidade(s) de Chá atual em estoque é igual a: ", qtdeProdutoCha)
+            print("------------------------------------------------------------")
+            novaqtdeProdutoCha = int(
+                input("Adicione mais unidade(s) de Chá ao estoque: "))
+            qtdeProdutoCha = novaqtdeProdutoCha
+            # Água
+            print(
+                "A quantidade de unidade(s) de Água atual em estoque é igual a: ", qtdeProdutoAgua)
+            print("------------------------------------------------------------")
+            novaqtdeProdutoAgua = int(
+                input("Adicione mais unidade(s) de Água ao estoque: "))
+            qtdeProdutoAgua = novaqtdeProdutoAgua
             print("Estoque atualizado com sucesso!")
             print("------------------------------------------------------------")
         # Verifica o valor recebido das vendas por produto e valor total durante o funcionamento da máquina
         elif opcaoAdm == "3":
             print("O valor recebido das vendas de Coca-Cola é igual a: R$",
-                  (qtdeProduto1Vendido*4))
-            print("O valor total das vendas é igual a: R$",
-                  (qtdeProduto1Vendido*4))
+                  (qtdeProdutoCocaVendido*4))
+            print("O valor recebido das vendas de Guaraná é igual a: R$",
+                  (qtdeProdutoGuaranaVendido*4))
+            print("O valor recebido das vendas de Chá é igual a: R$",
+                  (qtdeProdutoChaVendido*3))
+            print("O valor recebido das vendas de Água é igual a: R$",
+                  (qtdeProdutoAguaVendido*2))
+            print("O valor total das vendas é igual a: R$", ((qtdeProdutoCocaVendido*4) +
+                  (qtdeProdutoGuaranaVendido*4) + (qtdeProdutoChaVendido*3) + (qtdeProdutoAguaVendido*2)))
         # Verifica se usuario selecionou uma opção válida de entrada, caso contrário retorna ao início do loop
         else:
             print("Opção inválida, tente novamente")
@@ -129,21 +165,67 @@ while True:
     elif usuario == "2":
         # Apresenta informações de pagamento e produtos disponíveis
         print("Selecione o produto que deseja comprar, somente cédulas até R$20 e/ou moedas são aceitas para efetuar o pagamento.")
-        produto = input("1) Coca-Cola R$ 4.00: ")
+        produto = input(
+            "1) Coca-Cola R$ 4.00\n2) Guaraná R$ 4.00\n3) Chá R$ 3.00\n4) Água R$ 2.00\n")
         # Verifica qual produto o consumidor escolheu e quantas unidades irá comprar
         if produto == "1":
-            qtdeCompraProduto1 = int(
+            qtdeCompraCoca = int(
                 input("Quantas unidades de Coca gostaria de comprar: "))
             # Verifica se tem estoque do produto para o consumidor comprar
-            if int(qtdeCompraProduto1) > int(qtdeProduto1):
+            if int(qtdeCompraCoca) > int(qtdeProdutoCoca):
                 print(
-                    f"Infelizmente só temos {qtdeProduto1} unidades desse produto, tente novamente.")
+                    f"Infelizmente só temos {qtdeProdutoCoca} unidades desse produto, tente novamente.")
                 continue
             # Se tiver estoque mostra o valor total da compra ao consumidor
             else:
-                qtdeProduto1Vendido = (
-                    int(qtdeProduto1) - int(qtdeCompraProduto1))
-                valorCompra = (4 * qtdeCompraProduto1)
+                qtdeProdutoCocaVendido = (
+                    int(qtdeProdutoCoca) - int(qtdeCompraCoca))
+                valorCompra = (4 * qtdeCompraCoca)
+                print(
+                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
+        elif produto == "2":
+            qtdeCompraGuarana = int(
+                input("Quantas unidades de Guaraná gostaria de comprar: "))
+            # Verifica se tem estoque do produto para o consumidor comprar
+            if int(qtdeCompraGuarana) > int(qtdeProdutoGuarana):
+                print(
+                    f"Infelizmente só temos {qtdeProdutoGuarana} unidades desse produto, tente novamente.")
+                continue
+            # Se tiver estoque mostra o valor total da compra ao consumidor
+            else:
+                qtdeProdutoGuaranaVendido = (
+                    int(qtdeProdutoGuarana) - int(qtdeCompraGuarana))
+                valorCompra = (4 * qtdeCompraGuarana)
+                print(
+                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
+        elif produto == "3":
+            qtdeCompraCha = int(
+                input("Quantas unidades de Chá gostaria de comprar: "))
+            # Verifica se tem estoque do produto para o consumidor comprar
+            if int(qtdeCompraCha) > int(qtdeProdutoCha):
+                print(
+                    f"Infelizmente só temos {qtdeProdutoCha} unidades desse produto, tente novamente.")
+                continue
+            # Se tiver estoque mostra o valor total da compra ao consumidor
+            else:
+                qtdeProdutoChaVendido = (
+                    int(qtdeProdutoCha) - int(qtdeCompraCha))
+                valorCompra = (3 * qtdeCompraCha)
+                print(
+                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
+        elif produto == "4":
+            qtdeCompraAgua = int(
+                input("Quantas unidades de Água gostaria de comprar: "))
+            # Verifica se tem estoque do produto para o consumidor comprar
+            if int(qtdeCompraAgua) > int(qtdeProdutoAgua):
+                print(
+                    f"Infelizmente só temos {qtdeProdutoAgua} unidades desse produto, tente novamente.")
+                continue
+            # Se tiver estoque mostra o valor total da compra ao consumidor
+            else:
+                qtdeProdutoAguaVendido = (
+                    int(qtdeProdutoAgua) - int(qtdeCompraAgua))
+                valorCompra = (2 * qtdeCompraAgua)
                 print(
                     f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
         else:
@@ -168,10 +250,10 @@ while True:
             elif totalRecebido > valorCompra:
                 troco = totalRecebido - valorCompra
                 print(
-                    f"Seu troco é de R${troco}, boa compra e receba sua(s) {qtdeCompraProduto1} Coca-Cola(s)")
+                    f"Seu troco é de R${troco}, boa compra!")
             elif totalRecebido == valorCompra:
                 print(
-                    f"Sem troco, boa compra e receba sua(s) {qtdeCompraProduto1} Coca-Cola(s)")
+                    f"Sem troco, boa compra!")
             else:
                 divida = (valorCompra-totalRecebido)
                 print(
@@ -198,10 +280,10 @@ while True:
             elif totalRecebido > valorCompra:
                 troco = totalRecebido - valorCompra
                 print(
-                    f"Seu troco é de R${troco}, boa compra e receba sua(s) {qtdeCompraProduto1} Coca-Cola(s)")
+                    f"Seu troco é de R${troco}, boa compra!")
             elif totalRecebido == valorCompra:
                 print(
-                    f"Sem troco, boa compra e receba sua(s) {qtdeCompraProduto1} Coca-Cola(s)")
+                    f"Sem troco, boa compra!")
             else:
                 divida = (valorCompra-totalRecebido)
                 print(
@@ -235,10 +317,10 @@ while True:
             elif totalRecebido > valorCompra:
                 troco = totalRecebido - valorCompra
                 print(
-                    f"Seu troco é de R${troco}, boa compra e receba sua(s) {qtdeCompraProduto1} Coca-Cola(s)")
+                    f"Seu troco é de R${troco}, boa compra!")
             elif totalRecebido == valorCompra:
                 print(
-                    f"Sem troco, boa compra e receba sua(s) {qtdeCompraProduto1} Coca-Cola(s)")
+                    f"Sem troco, boa compra!")
             else:
                 divida = (valorCompra-totalRecebido)
                 print(
