@@ -4,7 +4,7 @@
 # Descrição: Programa que simula uma máquina de vendas.
 # Observação: Números, pontos e ENTER serão as únicas formas de entrada pelos usuários.
 
-# Declara as variáveis que serão utilizadas no programa
+# Declara as variáveis que serão utilizadas no programa.
 troco = 0
 qtdeProduto1 = 0
 qtdeProduto1Vendido = 0
