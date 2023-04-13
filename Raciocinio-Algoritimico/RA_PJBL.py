@@ -121,28 +121,28 @@ while True:
             print("------------------------------------------------------------")
             novaqtdeProdutoCoca = int(
                 input("Adicione mais unidade(s) de Coca-Cola ao estoque: "))
-            qtdeProdutoCoca = novaqtdeProdutoCoca
+            qtdeProdutoCoca += novaqtdeProdutoCoca
             # Guaraná
             print("A quantidade de unidade(s) de Guaraná atual em estoque é igual a: ",
                   qtdeProdutoGuarana)
             print("------------------------------------------------------------")
             novaqtdeProdutoGuarana = int(
                 input("Adicione mais unidade(s) de Guaraná ao estoque: "))
-            qtdeProdutoGuarana = novaqtdeProdutoGuarana
+            qtdeProdutoGuarana += novaqtdeProdutoGuarana
             # Chá
             print(
                 "A quantidade de unidade(s) de Chá atual em estoque é igual a: ", qtdeProdutoCha)
             print("------------------------------------------------------------")
             novaqtdeProdutoCha = int(
                 input("Adicione mais unidade(s) de Chá ao estoque: "))
-            qtdeProdutoCha = novaqtdeProdutoCha
+            qtdeProdutoCha += novaqtdeProdutoCha
             # Água
             print(
                 "A quantidade de unidade(s) de Água atual em estoque é igual a: ", qtdeProdutoAgua)
             print("------------------------------------------------------------")
             novaqtdeProdutoAgua = int(
                 input("Adicione mais unidade(s) de Água ao estoque: "))
-            qtdeProdutoAgua = novaqtdeProdutoAgua
+            qtdeProdutoAgua += novaqtdeProdutoAgua
             print("Estoque atualizado com sucesso!")
             print("------------------------------------------------------------")
         # Verifica o valor recebido das vendas por produto e valor total durante o funcionamento da máquina
