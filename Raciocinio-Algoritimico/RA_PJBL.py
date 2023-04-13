@@ -231,103 +231,74 @@ while True:
         else:
             print("Opção inválida, tente novamente")
             continue
+
         # Apresenta as formas de pagamento ao consumidor
-        print("Selecione as formas de pagamento abaixo:")
-        pagamento = input("1) Cédulas ou 2) Moedas ou 3) Cédulas e Moedas: ")
-        # Verifica a opção de pagamento escolhida pelo consumidor
-        if pagamento == "1":
-            # Recebe os valores em cédulas digitados pelo consumidor
-            print("Digite a quantidade de cédulas para o pagamento")
-            qtdeCedulas2 = int(input("Digite a quantidade de notas de 2: "))
-            qtdeCedulas5 = int(input("Digite a quantidade de notas de 5: "))
-            qtdeCedulas10 = int(input("Digite a quantidade de notas de 10: "))
-            qtdeCedulas20 = int(input("Digite a quantidade de notas de 20: "))
-            totalRecebido = (qtdeCedulas2*2) + (qtdeCedulas5*5) + \
-                (qtdeCedulas10*10) + (qtdeCedulas20*20)
-            # Verifica se tem troco para finalizar a compra
-            if float(troco) < totalRecebido:
-                print("Não foi possível realizar a compra")
-            elif totalRecebido > valorCompra:
-                troco = totalRecebido - valorCompra
-                print(
-                    f"Seu troco é de R${troco}, boa compra!")
-            elif totalRecebido == valorCompra:
-                print(
-                    f"Sem troco, boa compra!")
+        print("Digite o numero correspondente ao dinheiro para pagar:")
+        
+        continuar_loop = True
+
+        while continuar_loop:
+            dinheiro_inserido = int(input("1 - Moeda R$0,05\n2 - Moeda R$0,10\n3 - Moeda R$0,25\n4 - Moeda R$0,50\n5- Moeda R$1,00\n6 - Nota R$2,00\n7 - Nota R$5,00\n8 - Nota R$10,00\n9 - Nota R$20,00\n1 - Nota R$50,00"))
+
+            if dinheiro_inserido == 1:
+                if valorCompra < 0.05: 
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 0.05
+            elif dinheiro_inserido == 2:
+                if valorCompra < 0.10: 
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 0.10 
+            elif dinheiro_inserido == 3:
+                if valorCompra < 0.25:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 0.25
+            elif dinheiro_inserido == 4:
+                if valorCompra < 0.50:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 0.50
+            elif dinheiro_inserido == 5:
+                if valorCompra < 1.00:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 1.00
+            elif dinheiro_inserido == 6:
+                if valorCompra < 2:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 2
+            elif dinheiro_inserido == 7:
+                if valorCompra < 5:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 5
+            elif dinheiro_inserido == 8:
+                if valorCompra < 10:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 10
+            elif dinheiro_inserido == 9:
+                if valorCompra < 20:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 20
+            elif dinheiro_inserido == 10:
+                if valorCompra < 50:
+                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                else:
+                    valorCompra -= 50
             else:
-                divida = (valorCompra-totalRecebido)
-                print(
-                    f"Não foi possível finalizar a compra, falta R${divida} para realizar a compra, receba seu dinheiro de volta e tente novamente")
-        elif pagamento == "2":
-            # Recebe os valores em moedas digitados pelo consumidor
-            print("Digite a quantidade de moedas para o pagamento")
-            qtdeMoedas5 = int(
-                input("Digite a quantidade de moedas de 5 centavos: "))
-            qtdeMoedas10 = int(
-                input("Digite a quantidade de moedas de 10 centavos: "))
-            qtdeMoedas25 = int(
-                input("Digite a quantidade de moedas de 25 centavos: "))
-            qtdeMoedas50 = int(
-                input("Digite a quantidade de moedas de 50 centavos: "))
-            qtdeMoedas1 = int(
-                input("Digite a quantidade de moedas de 1 real: "))
-            totalRecebido = ((qtdeMoedas5*5)/100) + ((qtdeMoedas10*10)/100) + \
-                ((qtdeMoedas25*25)/100) + \
-                ((qtdeMoedas50*50)/100) + (qtdeMoedas1*1)
-            # Verifica se tem troco para finalizar a compra
-            if float(troco) < totalRecebido:
-                print("Não foi possível realizar a compra")
-            elif totalRecebido > valorCompra:
-                troco = totalRecebido - valorCompra
-                print(
-                    f"Seu troco é de R${troco}, boa compra!")
-            elif totalRecebido == valorCompra:
-                print(
-                    f"Sem troco, boa compra!")
+                print("Nota inválida")
+            
+            if valorCompra < 0.04:
+                print("Produto(s) pago(s) com sucesso !!")
+                continuar_loop = False
             else:
-                divida = (valorCompra-totalRecebido)
-                print(
-                    f"Falta R${divida} para finalizar a compra, insira mais cédulas")
-        elif pagamento == "3":
-            # Recebe os valores em cédulas e moedas digitados pelo consumidor
-            print("Digite a quantidade de cédulas para o pagamento")
-            qtdeCedulas2 = int(input("Digite a quantidade de notas de 2: "))
-            qtdeCedulas5 = int(input("Digite a quantidade de notas de 5: "))
-            qtdeCedulas10 = int(input("Digite a quantidade de notas de 10: "))
-            qtdeCedulas20 = int(input("Digite a quantidade de notas de 20: "))
-            totalRecebidoCedulas = (
-                qtdeCedulas2*2) + (qtdeCedulas5*5) + (qtdeCedulas10*10) + (qtdeCedulas20*20)
-            print("Digite a quantidade de moedas para o pagamento")
-            qtdeMoedas5 = int(
-                input("Digite a quantidade de moedas de 5 centavos: "))
-            qtdeMoedas10 = int(
-                input("Digite a quantidade de moedas de 10 centavos: "))
-            qtdeMoedas25 = int(
-                input("Digite a quantidade de moedas de 25 centavos: "))
-            qtdeMoedas50 = int(
-                input("Digite a quantidade de moedas de 50 centavos: "))
-            qtdeMoedas1 = int(
-                input("Digite a quantidade de moedas de 1 real: "))
-            totalRecebidoMoedas = ((qtdeMoedas5*5)/100) + ((qtdeMoedas10*10)/100) + (
-                (qtdeMoedas25*25)/100) + ((qtdeMoedas50*50)/100) + (qtdeMoedas1*1)
-            totalRecebido = totalRecebidoCedulas + totalRecebidoMoedas
-            # Verifica se tem troco para finalizar a compra
-            if float(troco) < totalRecebido:
-                print("Não foi possível realizar a compra")
-            elif totalRecebido > valorCompra:
-                troco = totalRecebido - valorCompra
-                print(
-                    f"Seu troco é de R${troco}, boa compra!")
-            elif totalRecebido == valorCompra:
-                print(
-                    f"Sem troco, boa compra!")
-            else:
-                divida = (valorCompra-totalRecebido)
-                print(
-                    f"Falta R${divida} para finalizar a compra, insira mais cédulas")
-        else:
-            print("Opção inválida, tente novamente")
-            continue
+                print("Ainda falta R$", valorCompra, " para pagar, insira novamente")
+            
     # Mostra mensagem de agradecimento, finaliza a compra e pede se o consumidor quer realizar outra ou encerra o programa
     print("Obrigado por utilizar nossa máquina de refrigerantes, você irá retornar ao menu principal!")
     print("------------------------------------------------------------")
