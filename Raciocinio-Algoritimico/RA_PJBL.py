@@ -66,7 +66,7 @@ while True:
                 input("Digite a quantidade de notas de 20: "))
             novoTotalCedulas = (qtdeCedulas2*2) + (qtdeCedulas5*5) + \
                 (qtdeCedulas10*10) + (qtdeCedulas20*20)
-            totalCedulas = novoTotalCedulas
+            totalCedulas += novoTotalCedulas
             print(
                 f"A quantidade de cédulas de 2 reais é de: {qtdeCedulas2}")
             print(
@@ -93,7 +93,7 @@ while True:
             novoTotalMoedas = ((qtdeMoedas5*5)/100) + ((qtdeMoedas10*10)/100) + \
                 ((qtdeMoedas25*25)/100) + \
                 ((qtdeMoedas50*50)/100) + (qtdeMoedas1*1)
-            totalMoedas = novoTotalMoedas
+            totalMoedas += novoTotalMoedas
             print(
                 f"A quantidade de moedas de 5 centavos é de: {qtdeMoedas5}")
             print(
@@ -109,7 +109,7 @@ while True:
             print("------------------------------------------------------------")
             novo_troco = (totalCedulas + totalMoedas)
             print(f"O total de troco na máquina é de R${novo_troco:.2f}")
-            troco = novo_troco
+            troco += novo_troco
             print("Troco atualizado com sucesso!")
             print("------------------------------------------------------------")
         # Se a opção selecionada for equivalente a 2, o estoque será atualizado por tipo e quantidade de produtos disponíveis.
