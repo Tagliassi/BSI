@@ -238,67 +238,72 @@ while True:
         continuar_loop = True
 
         while continuar_loop:
-            dinheiro_inserido = int(input("1 - Moeda R$0,05\n2 - Moeda R$0,10\n3 - Moeda R$0,25\n4 - Moeda R$0,50\n5- Moeda R$1,00\n6 - Nota R$2,00\n7 - Nota R$5,00\n8 - Nota R$10,00\n9 - Nota R$20,00\n1 - Nota R$50,00"))
+            print("----------------------------------------------------------------")
+            dinheiro_inserido = int(input("1 - Moeda R$0,05\n2 - Moeda R$0,10\n3 - Moeda R$0,25\n4 - Moeda R$0,50\n5 - Moeda R$1,00\n6 - Nota R$2,00\n7 - Nota R$5,00\n8 - Nota R$10,00\n9 - Nota R$20,00\n10 - Nota R$50,00\n===================================================\nValor: "))
+            print("----------------------------------------------------------------")
 
             if dinheiro_inserido == 1:
                 if valorCompra < 0.05: 
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 0.05
             elif dinheiro_inserido == 2:
                 if valorCompra < 0.10: 
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 0.10 
             elif dinheiro_inserido == 3:
                 if valorCompra < 0.25:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 0.25
             elif dinheiro_inserido == 4:
                 if valorCompra < 0.50:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 0.50
             elif dinheiro_inserido == 5:
                 if valorCompra < 1.00:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 1.00
             elif dinheiro_inserido == 6:
                 if valorCompra < 2:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 2
             elif dinheiro_inserido == 7:
                 if valorCompra < 5:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 5
             elif dinheiro_inserido == 8:
                 if valorCompra < 10:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 10
             elif dinheiro_inserido == 9:
                 if valorCompra < 20:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra:", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 20
             elif dinheiro_inserido == 10:
                 if valorCompra < 50:
-                    print("\nValor informado é maior que o valor total da compra:", valorCompra, "\nPor favor insira outro\n")
+                    print("\nValor informado é maior que o valor total da compra: ", round(valorCompra, 2), "-----(POR FAVOR INSIRA OUTRO VALOR)")
                 else:
                     valorCompra -= 50
             else:
                 print("Nota inválida")
             
+            print("----------------------------------------------------------------")
             if valorCompra < 0.04:
                 print("Produto(s) pago(s) com sucesso !!")
                 continuar_loop = False
             else:
-                print("Ainda falta R$", valorCompra, " para pagar, insira novamente")
-            
+                print("----------------------------------------------------------------")
+                print("Ainda falta R$", round(valorCompra, 2), " para pagar, insira mais dinheiro")
+                print("----------------------------------------------------------------")
+
     # Mostra mensagem de agradecimento, finaliza a compra e pede se o consumidor quer realizar outra ou encerra o programa
     print("Obrigado por utilizar nossa máquina de refrigerantes, você irá retornar ao menu principal!")
     print("------------------------------------------------------------")
