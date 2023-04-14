@@ -38,7 +38,6 @@ while True:
         print(f"Ok, você entrou como usuário {usuario}")
     else:
         print("Usuário inválido, tente novamente")
-        continue
     print("------------------------------------------------------------")
     # Se o usuário for administrador habilita as funcionalidades para gerenciar a máquina
     if usuario == "1":
