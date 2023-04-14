@@ -1,6 +1,7 @@
 # Programa: Vending Machine
 # Autor: Rafael Galafassi, Vinicius Costa, Marcos Vincius e Vinicius Viana
 # Data de criação: 07/04/2023
+# Versão: 1.0
 # Descrição: Programa que simula uma máquina de vendas.
 # Observação: Números, pontos e ENTER serão as únicas formas de entrada pelos usuários.
 
