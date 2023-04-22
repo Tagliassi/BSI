@@ -5,27 +5,23 @@
 # Descrição: Programa que simula uma máquina de vendas.
 # Observação: Números, pontos e ENTER serão as únicas formas de entrada pelos usuários.
 
-# Declara as variáveis que serão utilizadas no programa.
-# Produtos
-qtdeProdutoAgua = 0
-qtdeProdutoAguaVendido = 0
-qtdeProdutoCha = 0
-qtdeProdutoChaVendido = 0
-qtdeProdutoGuarana = 0
-qtdeProdutoGuaranaVendido = 0
-qtdeProdutoCoca = 0
-qtdeProdutoCocaVendido = 0
-# Dados
+qtd_produto_agua = 0
+qtd_produto_agua_vendido = 0
+qtd_produto_cha = 0
+qtd_produto_cha_vendido = 0
+qtd_produto_guarana = 0
+qtd_produto_guarana_vendido = 0
+qtd_produto_coca = 0
+qtd_produto_coca_vendido = 0
+
 troco = 0
-valorCompra = 0
-totalCedulas = 0
-totalMoedas = 0
-novoTotalCedulas = 0
+valor_compra = 0
+total_cedulas = 0
+total_moedas = 0
+novo_total_cedulas = 0
 senha = ""
 
-# inicializa o loop continuo do programa
 while True:
-    # Exibe mensagem de boas-vindas e recebe o dado do tipo de usuário
     print("------------------------------------------------------------")
     print("Bem-vindo(a) à máquina de Refrigerantes!")
     print("------------------------------------------------------------")
@@ -33,301 +29,413 @@ while True:
 
     usuario = input("\n1) ADMINISTRADOR\n2) CONSUMIDOR\n")
 
-    # Verifica se o tipo de usuário é válido e exibe uma resposta
     print("------------------------------------------------------------")
     if usuario == "1" or usuario == "2":
-        print(f"Ok, você entrou como usuário {usuario}")
+        print("Ok, você entrou como usuário", usuario)
     else:
         print("Usuário inválido, tente novamente")
+        continue
     print("------------------------------------------------------------")
-    # Se o usuário for administrador habilita as funcionalidades para gerenciar a máquina
     if usuario == "1":
-        # solicita a senha para habilitar o sistema
         senha = input("Digite a senha para habilitar o sistema: ")
         while senha != "1234":
             print("Senha inválida, tente novamente")
             senha = input("Digite a senha para habilitar o sistema: ")
-        # Exibe as opções disponíveis para o administrador
         print("------------------------------------------------------------")
-        opcaoAdm = input(
+        opcao_adm = input(
             "Selecione a opção:\n(1) para atualizar o troco na máquina\n(2) para atualizar o estoque de produtos\n(3) para ver a quantidade de dinheiro das vendas\n")
-        # Se a opção selecionada for equivalente a 1, o troco será atualizado por tipo e quantidade.
-        if opcaoAdm == "1":
-            # Solicita a quantidade de cédulas de cada valor e atualiza o total em dinheiro da máquina
+        if opcao_adm == "1":
             print("------------------------------------------------------------")
             print("Digite a quantidade de cédulas")
-            qtdeCedulas2 = int(
+            qtd_cedulas_2 = int(
                 input("Digite a quantidade de notas de 2: "))
-            qtdeCedulas5 = int(
+            qtd_cedulas_5 = int(
                 input("Digite a quantidade de notas de 5: "))
             qtdeCedulas10 = int(
                 input("Digite a quantidade de notas de 10: "))
-            qtdeCedulas20 = int(
+            qtd_cedulas_20 = int(
                 input("Digite a quantidade de notas de 20: "))
-            novoTotalCedulas = (qtdeCedulas2*2) + (qtdeCedulas5*5) + \
-                (qtdeCedulas10*10) + (qtdeCedulas20*20)
-            totalCedulas = novoTotalCedulas
+            novo_total_cedulas = (qtd_cedulas_2*2) + (qtd_cedulas_5*5) + \
+                (qtdeCedulas10*10) + (qtd_cedulas_20*20)
+            total_cedulas = novo_total_cedulas
             print(
-                f"A quantidade de cédulas de 2 reais é de: {qtdeCedulas2}")
+                "A quantidade de cédulas de 2 reais é de: ", qtd_cedulas_2)
             print(
-                f"A quantidade de cédulas de 5 reais é de: {qtdeCedulas5}")
+                "A quantidade de cédulas de 5 reais é de: ", qtd_cedulas_5)
             print(
-                f"A quantidade de cédulas de 10 reais é de: {qtdeCedulas10}")
+                "A quantidade de cédulas de 10 reais é de: ", qtdeCedulas10)
             print(
-                f"A quantidade de cédulas de 20 reais é de: {qtdeCedulas20}")
+                "A quantidade de cédulas de 20 reais é de: ", qtd_cedulas_20)
             print(
-                f"O total de dinheiro em cedulas na máquina é de R${totalCedulas}")
-            # Solicita a quantidade de moedas de cada valor e atualiza o total em dinheiro da máquina
+                "O total de dinheiro em cedulas na máquina é de R$", total_cedulas)
             print("------------------------------------------------------------")
             print("Digite a quantidade de moedas")
-            qtdeMoedas5 = int(
+            qtd_moedas_5 = int(
                 input("Digite a quantidade de moedas de 5 centavos: "))
-            qtdeMoedas10 = int(
+            qtd_moedas_10 = int(
                 input("Digite a quantidade de moedas de 10 centavos: "))
-            qtdeMoedas25 = int(
+            qtd_moedas_25 = int(
                 input("Digite a quantidade de moedas de 25 centavos: "))
-            qtdeMoedas50 = int(
+            qtd_moedas_50 = int(
                 input("Digite a quantidade de moedas de 50 centavos: "))
-            qtdeMoedas1 = int(
+            qtd_moedas_1 = int(
                 input("Digite a quantidade de moedas de 1 real: "))
-            novoTotalMoedas = ((qtdeMoedas5*5)/100) + ((qtdeMoedas10*10)/100) + \
-                ((qtdeMoedas25*25)/100) + \
-                ((qtdeMoedas50*50)/100) + (qtdeMoedas1*1)
-            totalMoedas = novoTotalMoedas
+            novo_total_moedas = ((qtd_moedas_5*5)/100) + ((qtd_moedas_10*10)/100) + \
+                ((qtd_moedas_25*25)/100) + \
+                ((qtd_moedas_50*50)/100) + (qtd_moedas_1*1)
+            total_moedas = novo_total_moedas
             print(
-                f"A quantidade de moedas de 5 centavos é de: {qtdeMoedas5}")
+                "A quantidade de moedas de 5 centavos é de: ", qtd_moedas_5)
             print(
-                f"A quantidade de moedas de 10 centavos é de: {qtdeMoedas10}")
+                "A quantidade de moedas de 10 centavos é de: ", qtd_moedas_10)
             print(
-                f"A quantidade de moedas de 25 centavos é de: {qtdeMoedas25}")
+                "A quantidade de moedas de 25 centavos é de: ", qtd_moedas_25)
             print(
-                f"A quantidade de moedas de 50 centavos é de: {qtdeMoedas50}")
-            print(f"A quantidade de moedas de 1 real é de: {qtdeMoedas1}")
+                "A quantidade de moedas de 50 centavos é de: ", qtd_moedas_50)
+            print("A quantidade de moedas de 1 real é de: ", qtd_moedas_1)
             print(
-                f"O total de dinheiro em moedas na máquina é de R${totalMoedas:.2f}")
-            # Atualiza a quantidade de troco disponível na máquina
+                "O total de dinheiro em moedas na máquina é de R$", total_moedas)
+
             print("------------------------------------------------------------")
-            novo_troco = (totalCedulas + totalMoedas)
-            print(f"O total de troco na máquina é de R${novo_troco:.2f}")
+            novo_troco = (total_cedulas + total_moedas)
+            print("O total de troco na máquina é de R$", novo_troco)
             troco = novo_troco
             print("Troco atualizado com sucesso!")
             print("------------------------------------------------------------")
-        # Se a opção selecionada for equivalente a 2, o estoque será atualizado por tipo e quantidade de produtos disponíveis.
-        elif opcaoAdm == "2":
+        elif opcao_adm == "2":
             print("------------------------------------------------------------")
-            # Coca
-            print(
-                "A quantidade de unidade(s) de Coca-Cola atual em estoque é igual a: ", qtdeProdutoCoca)
-            print("------------------------------------------------------------")
-            novaqtdeProdutoCoca = int(
+            nova_qtd_produto_coca = int(
                 input("Adicione mais unidade(s) de Coca-Cola ao estoque: "))
-            qtdeProdutoCoca = novaqtdeProdutoCoca
-            # Guaraná
-            print("A quantidade de unidade(s) de Guaraná atual em estoque é igual a: ",
-                  qtdeProdutoGuarana)
+            qtd_produto_coca += nova_qtd_produto_coca
+            print(
+                "A quantidade de unidade(s) de Coca-Cola atual em estoque é igual a: ", qtd_produto_coca)
             print("------------------------------------------------------------")
-            novaqtdeProdutoGuarana = int(
+
+            nova_qtd_produto_guarana = int(
                 input("Adicione mais unidade(s) de Guaraná ao estoque: "))
-            qtdeProdutoGuarana = novaqtdeProdutoGuarana
-            # Chá
-            print(
-                "A quantidade de unidade(s) de Chá atual em estoque é igual a: ", qtdeProdutoCha)
+            qtd_produto_guarana += nova_qtd_produto_guarana
+            print("A quantidade de unidade(s) de Guaraná atual em estoque é igual a: ",
+                  qtd_produto_guarana)
             print("------------------------------------------------------------")
-            novaqtdeProdutoCha = int(
+
+            nova_qtd_produto_cha = int(
                 input("Adicione mais unidade(s) de Chá ao estoque: "))
-            qtdeProdutoCha = novaqtdeProdutoCha
-            # Água
+            qtd_produto_cha += nova_qtd_produto_cha
             print(
-                "A quantidade de unidade(s) de Água atual em estoque é igual a: ", qtdeProdutoAgua)
+                "A quantidade de unidade(s) de Chá atual em estoque é igual a: ", qtd_produto_cha)
             print("------------------------------------------------------------")
-            novaqtdeProdutoAgua = int(
+
+            nova_qtd_produto_agua = int(
                 input("Adicione mais unidade(s) de Água ao estoque: "))
-            qtdeProdutoAgua = novaqtdeProdutoAgua
+            qtd_produto_agua += nova_qtd_produto_agua
+            print(
+                "A quantidade de unidade(s) de Água atual em estoque é igual a: ", qtd_produto_agua)
+            print("------------------------------------------------------------")
+
             print("Estoque atualizado com sucesso!")
             print("------------------------------------------------------------")
-        # Verifica o valor recebido das vendas por produto e valor total durante o funcionamento da máquina
-        elif opcaoAdm == "3":
+        elif opcao_adm == "3":
             print("O valor recebido das vendas de Coca-Cola é igual a: R$",
-                  (qtdeProdutoCocaVendido*4))
+                  (qtd_produto_coca_vendido*4))
             print("O valor recebido das vendas de Guaraná é igual a: R$",
-                  (qtdeProdutoGuaranaVendido*4))
+                  (qtd_produto_guarana_vendido*4))
             print("O valor recebido das vendas de Chá é igual a: R$",
-                  (qtdeProdutoChaVendido*3))
+                  (qtd_produto_cha_vendido*3))
             print("O valor recebido das vendas de Água é igual a: R$",
-                  (qtdeProdutoAguaVendido*2))
-            print("O valor total das vendas é igual a: R$", ((qtdeProdutoCocaVendido*4) +
-                  (qtdeProdutoGuaranaVendido*4) + (qtdeProdutoChaVendido*3) + (qtdeProdutoAguaVendido*2)))
-        # Verifica se usuario selecionou uma opção válida de entrada, caso contrário retorna ao início do loop
+                  (qtd_produto_agua_vendido*2))
+            print("O valor total das vendas é igual a: R$", ((qtd_produto_coca_vendido*4) +
+                  (qtd_produto_guarana_vendido*4) + (qtd_produto_cha_vendido*3) + (qtd_produto_agua_vendido*2)))
         else:
             print("Opção inválida, tente novamente")
             continue
-    # Se o usuário for consumidor habilita as funcionalidades para realizar as compras
     elif usuario == "2":
-        # Apresenta informações de pagamento e produtos disponíveis
         print("Selecione o produto que deseja comprar, somente cédulas até R$20 e/ou moedas são aceitas para efetuar o pagamento.")
         produto = input(
             "1) Coca-Cola R$ 4.00\n2) Guaraná R$ 4.00\n3) Chá R$ 3.00\n4) Água R$ 2.00\n")
-        # Verifica qual produto o consumidor escolheu e quantas unidades irá comprar
         if produto == "1":
-            qtdeCompraCoca = int(
+            qtd_compra_coca = int(
                 input("Quantas unidades de Coca gostaria de comprar: "))
-            # Verifica se tem estoque do produto para o consumidor comprar
-            if int(qtdeCompraCoca) > int(qtdeProdutoCoca):
+            if int(qtd_compra_coca) > int(qtd_produto_coca):
                 print(
-                    f"Infelizmente só temos {qtdeProdutoCoca} unidades desse produto, tente novamente.")
+                    "Infelizmente só temos ", qtd_produto_coca, " unidades desse produto, tente novamente.")
                 continue
-            # Se tiver estoque mostra o valor total da compra ao consumidor
             else:
-                qtdeProdutoCocaVendido = (
-                    int(qtdeProdutoCoca) - int(qtdeCompraCoca))
-                valorCompra = (4 * qtdeCompraCoca)
+                qtd_produto_coca_vendido = (
+                    int(qtd_produto_coca) - int(qtd_compra_coca))
+                valor_compra = (4 * qtd_compra_coca)
                 print(
-                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
+                    "\n--------------------------------------------------------------------")
+                print(
+                    "O valor total da compra ficou igual a: R$", valor_compra)
+                print(
+                    "\n--------------------------------------------------------------------")
+
         elif produto == "2":
             qtdeCompraGuarana = int(
                 input("Quantas unidades de Guaraná gostaria de comprar: "))
-            # Verifica se tem estoque do produto para o consumidor comprar
-            if int(qtdeCompraGuarana) > int(qtdeProdutoGuarana):
+            if int(qtdeCompraGuarana) > int(qtd_produto_guarana):
                 print(
-                    f"Infelizmente só temos {qtdeProdutoGuarana} unidades desse produto, tente novamente.")
+                    "Infelizmente só temos ", qtd_produto_guarana, " unidades desse produto, tente novamente.")
                 continue
-            # Se tiver estoque mostra o valor total da compra ao consumidor
             else:
-                qtdeProdutoGuaranaVendido = (
-                    int(qtdeProdutoGuarana) - int(qtdeCompraGuarana))
-                valorCompra = (4 * qtdeCompraGuarana)
+                qtd_produto_guarana_vendido = (
+                    int(qtd_produto_guarana) - int(qtdeCompraGuarana))
+                valor_compra = (4 * qtdeCompraGuarana)
                 print(
-                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
+                    "O valor total da compra ficou igual a: R$", valor_compra)
         elif produto == "3":
             qtdeCompraCha = int(
                 input("Quantas unidades de Chá gostaria de comprar: "))
-            # Verifica se tem estoque do produto para o consumidor comprar
-            if int(qtdeCompraCha) > int(qtdeProdutoCha):
+            if int(qtdeCompraCha) > int(qtd_produto_cha):
                 print(
-                    f"Infelizmente só temos {qtdeProdutoCha} unidades desse produto, tente novamente.")
+                    "Infelizmente só temos ", qtd_produto_cha, "unidades desse produto, tente novamente.")
                 continue
-            # Se tiver estoque mostra o valor total da compra ao consumidor
             else:
-                qtdeProdutoChaVendido = (
-                    int(qtdeProdutoCha) - int(qtdeCompraCha))
-                valorCompra = (3 * qtdeCompraCha)
+                qtd_produto_cha_vendido = (
+                    int(qtd_produto_cha) - int(qtdeCompraCha))
+                valor_compra = (3 * qtdeCompraCha)
                 print(
-                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
+                    "O valor total da compra ficou igual a: R$", valor_compra)
         elif produto == "4":
             qtdeCompraAgua = int(
                 input("Quantas unidades de Água gostaria de comprar: "))
-            # Verifica se tem estoque do produto para o consumidor comprar
-            if int(qtdeCompraAgua) > int(qtdeProdutoAgua):
+            if int(qtdeCompraAgua) > int(qtd_produto_agua):
                 print(
-                    f"Infelizmente só temos {qtdeProdutoAgua} unidades desse produto, tente novamente.")
+                    "Infelizmente só temos ", qtd_produto_agua, " unidades desse produto, tente novamente.")
                 continue
-            # Se tiver estoque mostra o valor total da compra ao consumidor
             else:
-                qtdeProdutoAguaVendido = (
-                    int(qtdeProdutoAgua) - int(qtdeCompraAgua))
-                valorCompra = (2 * qtdeCompraAgua)
+                qtd_produto_agua_vendido = (
+                    int(qtd_produto_agua) - int(qtdeCompraAgua))
+                valor_compra = (2 * qtdeCompraAgua)
                 print(
-                    f"O valor total da compra ficou igual a: R${valorCompra:.2f}")
+                    "O valor total da compra ficou igual a: R$", valor_compra)
         else:
             print("Opção inválida, tente novamente")
             continue
-        # Apresenta as formas de pagamento ao consumidor
-        print("Selecione as formas de pagamento abaixo:")
-        pagamento = input("1) Cédulas ou 2) Moedas ou 3) Cédulas e Moedas: ")
-        # Verifica a opção de pagamento escolhida pelo consumidor
-        if pagamento == "1":
-            # Recebe os valores em cédulas digitados pelo consumidor
-            print("Digite a quantidade de cédulas para o pagamento")
-            qtdeCedulas2 = int(input("Digite a quantidade de notas de 2: "))
-            qtdeCedulas5 = int(input("Digite a quantidade de notas de 5: "))
-            qtdeCedulas10 = int(input("Digite a quantidade de notas de 10: "))
-            qtdeCedulas20 = int(input("Digite a quantidade de notas de 20: "))
-            totalRecebido = (qtdeCedulas2*2) + (qtdeCedulas5*5) + \
-                (qtdeCedulas10*10) + (qtdeCedulas20*20)
-            # Verifica se tem troco para finalizar a compra
-            if float(troco) < totalRecebido:
-                print("Não foi possível realizar a compra")
-            elif totalRecebido > valorCompra:
-                troco = totalRecebido - valorCompra
-                print(
-                    f"Seu troco é de R${troco}, boa compra!")
-            elif totalRecebido == valorCompra:
-                print(
-                    f"Sem troco, boa compra!")
+
+        print("Digite o numero correspondente ao dinheiro para pagar:")
+
+        continuar_loop = True
+
+        while continuar_loop:
+            print("----------------------------------------------------------------")
+            dinheiro_inserido = int(input(
+                "1 - Moeda R$0,05\n2 - Moeda R$0,10\n3 - Moeda R$0,25\n4 - Moeda R$0,50\n5 - Moeda R$1,00\n6 - Nota R$2,00\n7 - Nota R$5,00\n8 - Nota R$10,00\n9 - Nota R$20,00\n10 - Nota R$50,00\n===================================================\nValor: "))
+            print("----------------------------------------------------------------")
+
+            if dinheiro_inserido == 1:
+                if valor_compra < 0.05:
+                    print("\n------------\nVocê inseriu R$",
+                          round(0.05, 2), " reais\n")
+
+                    valor_compra -= 0.05
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 0.05
+            elif dinheiro_inserido == 2:
+                if valor_compra < 0.10:
+                    print("\n------------\nVocê inseriu R$",
+                          round(0.10, 2), " reais\n")
+
+                    valor_compra -= 0.10
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 0.10
+            elif dinheiro_inserido == 3:
+                if valor_compra < 0.25:
+                    print("\n------------\nVocê inseriu R$",
+                          round(0.25, 2), " reais\n")
+
+                    valor_compra -= 0.25
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 0.25
+            elif dinheiro_inserido == 4:
+                if valor_compra < 0.50:
+                    print("\n------------\nVocê inseriu R$",
+                          round(0.50, 2), " reais\n")
+
+                    valor_compra -= 0.50
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 0.50
+            elif dinheiro_inserido == 5:
+                if valor_compra < 1.00:
+                    print("\n------------\nVocê inseriu R$",
+                          round(1, 2), " reais\n")
+
+                    valor_compra -= 1
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 1.00
+            elif dinheiro_inserido == 6:
+                if valor_compra < 2:
+                    print("\n------------\nVocê inseriu R$",
+                          round(2, 2), " reais\n")
+
+                    valor_compra -= 2
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 2
+            elif dinheiro_inserido == 7:
+                if valor_compra < 5:
+                    print("\n------------\nVocê inseriu R$",
+                          round(5, 2), " reais\n")
+
+                    valor_compra -= 5
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 5
+            elif dinheiro_inserido == 8:
+                if valor_compra < 10:
+                    print("\n------------\nVocê inseriu R$",
+                          round(10, 2), " reais\n")
+
+                    valor_compra -= 10
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 10
+            elif dinheiro_inserido == 9:
+                if valor_compra < 20:
+                    print("\n------------\nVocê inseriu R$",
+                          round(20, 2), " reais\n")
+
+                    valor_compra -= 20
+                    sobra = valor_compra - 20
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 20
+            elif dinheiro_inserido == 10:
+                if valor_compra < 50:
+                    print("\n------------\nVocê inseriu R$",
+                          round(50, 2), " reais\n")
+
+                    valor_compra -= 50
+                    if valor_compra <= 0:
+                        troco += valor_compra
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Foi dado R$", abs(valor_compra),
+                              "de troco para você")
+                        print(
+                            "----------------------------------------------------------------")
+                        print("Novo saldo de troco da máquina: ", troco)
+                    else:
+                        print(
+                            "A máquina não possui troco suficiente para essa quantidade de dinheiro, por favor insira outra quantidade...")
+                else:
+                    valor_compra -= 50
             else:
-                divida = (valorCompra-totalRecebido)
-                print(
-                    f"Não foi possível finalizar a compra, falta R${divida} para realizar a compra, receba seu dinheiro de volta e tente novamente")
-        elif pagamento == "2":
-            # Recebe os valores em moedas digitados pelo consumidor
-            print("Digite a quantidade de moedas para o pagamento")
-            qtdeMoedas5 = int(
-                input("Digite a quantidade de moedas de 5 centavos: "))
-            qtdeMoedas10 = int(
-                input("Digite a quantidade de moedas de 10 centavos: "))
-            qtdeMoedas25 = int(
-                input("Digite a quantidade de moedas de 25 centavos: "))
-            qtdeMoedas50 = int(
-                input("Digite a quantidade de moedas de 50 centavos: "))
-            qtdeMoedas1 = int(
-                input("Digite a quantidade de moedas de 1 real: "))
-            totalRecebido = ((qtdeMoedas5*5)/100) + ((qtdeMoedas10*10)/100) + \
-                ((qtdeMoedas25*25)/100) + \
-                ((qtdeMoedas50*50)/100) + (qtdeMoedas1*1)
-            # Verifica se tem troco para finalizar a compra
-            if float(troco) < totalRecebido:
-                print("Não foi possível realizar a compra")
-            elif totalRecebido > valorCompra:
-                troco = totalRecebido - valorCompra
-                print(
-                    f"Seu troco é de R${troco}, boa compra!")
-            elif totalRecebido == valorCompra:
-                print(
-                    f"Sem troco, boa compra!")
+                print("Nota inválida")
+
+            print("----------------------------------------------------------------")
+            if valor_compra <= 0:
+                print("Produto(s) pago(s) com sucesso !!")
+                continuar_loop = False
             else:
-                divida = (valorCompra-totalRecebido)
-                print(
-                    f"Falta R${divida} para finalizar a compra, insira mais cédulas")
-        elif pagamento == "3":
-            # Recebe os valores em cédulas e moedas digitados pelo consumidor
-            print("Digite a quantidade de cédulas para o pagamento")
-            qtdeCedulas2 = int(input("Digite a quantidade de notas de 2: "))
-            qtdeCedulas5 = int(input("Digite a quantidade de notas de 5: "))
-            qtdeCedulas10 = int(input("Digite a quantidade de notas de 10: "))
-            qtdeCedulas20 = int(input("Digite a quantidade de notas de 20: "))
-            totalRecebidoCedulas = (
-                qtdeCedulas2*2) + (qtdeCedulas5*5) + (qtdeCedulas10*10) + (qtdeCedulas20*20)
-            print("Digite a quantidade de moedas para o pagamento")
-            qtdeMoedas5 = int(
-                input("Digite a quantidade de moedas de 5 centavos: "))
-            qtdeMoedas10 = int(
-                input("Digite a quantidade de moedas de 10 centavos: "))
-            qtdeMoedas25 = int(
-                input("Digite a quantidade de moedas de 25 centavos: "))
-            qtdeMoedas50 = int(
-                input("Digite a quantidade de moedas de 50 centavos: "))
-            qtdeMoedas1 = int(
-                input("Digite a quantidade de moedas de 1 real: "))
-            totalRecebidoMoedas = ((qtdeMoedas5*5)/100) + ((qtdeMoedas10*10)/100) + (
-                (qtdeMoedas25*25)/100) + ((qtdeMoedas50*50)/100) + (qtdeMoedas1*1)
-            totalRecebido = totalRecebidoCedulas + totalRecebidoMoedas
-            # Verifica se tem troco para finalizar a compra
-            if float(troco) < totalRecebido:
-                print("Não foi possível realizar a compra")
-            elif totalRecebido > valorCompra:
-                troco = totalRecebido - valorCompra
-                print(
-                    f"Seu troco é de R${troco}, boa compra!")
-            elif totalRecebido == valorCompra:
-                print(
-                    f"Sem troco, boa compra!")
-            else:
-                divida = (valorCompra-totalRecebido)
-                print(
-                    f"Falta R${divida} para finalizar a compra, insira mais cédulas")
-        else:
-            print("Opção inválida, tente novamente")
-            continue
-    # Mostra mensagem de agradecimento, finaliza a compra e pede se o consumidor quer realizar outra ou encerra o programa
-    print("Obrigado por utilizar nossa máquina de refrigerantes, você irá retornar ao menu principal!")
+                print("----------------------------------------------------------------")
+                print("Ainda falta R$", round(valor_compra, 2),
+                      " para pagar, insira mais dinheiro")
+                print("----------------------------------------------------------------")
+
     print("------------------------------------------------------------")
+    print("Obrigado por utilizar nossa máquina de refrigerantes, você irá retornar ao menu principal!")
