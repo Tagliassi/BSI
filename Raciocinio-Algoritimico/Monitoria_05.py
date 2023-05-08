@@ -1,3 +1,5 @@
+#Tuplas e dicionários
+
 #meu_dicionario = {"chave_1" : "item1", "chave_2" : "item2"}
 #meu_dicionario = {}
 
