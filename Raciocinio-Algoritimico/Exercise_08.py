@@ -59,13 +59,16 @@
 # Exercise 04:
 
 faturamento = 0
+mercardorias  = []
 
-for id_mercadoria in range(1, 101):
-    quantidade = int(
-        input(f"Informe a quantidade vendida da mercadoria {id_mercadoria}: "))
-    preco = float(
-        input(f"Informe o preço de venda da mercadoria {id_mercadoria}: "))
+for id_mercadoria in range(1, 3):
+    quantidade = int(input(f"Informe a quantidade vendida da mercadoria {id_mercadoria}: "))
+    preco = float( input(f"Informe o preço de venda da mercadoria {id_mercadoria}: "))
+    mercadoria = [id_mercadoria, quantidade, preco]
+    mercardorias.append(mercadoria)
     faturamento_mercadoria = quantidade * preco
     faturamento += faturamento_mercadoria
 
 print("O faturamento mensal do armazém é: ", faturamento)
+print(mercardorias)
+
