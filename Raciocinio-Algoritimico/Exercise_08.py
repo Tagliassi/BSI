@@ -58,17 +58,27 @@
 
 # Exercise 04:
 
-faturamento = 0
-mercardorias  = []
+# faturamento = 0
+# mercardorias  = []
 
-for id_mercadoria in range(1, 3):
-    quantidade = int(input(f"Informe a quantidade vendida da mercadoria {id_mercadoria}: "))
-    preco = float( input(f"Informe o preço de venda da mercadoria {id_mercadoria}: "))
-    mercadoria = [id_mercadoria, quantidade, preco]
-    mercardorias.append(mercadoria)
-    faturamento_mercadoria = quantidade * preco
-    faturamento += faturamento_mercadoria
+# for id_mercadoria in range(1, 3):
+    # quantidade = int(input(f"Informe a quantidade vendida da mercadoria {id_mercadoria}: "))
+    # preco = float( input(f"Informe o preço de venda da mercadoria {id_mercadoria}: "))
+    # mercadoria = [id_mercadoria, quantidade, preco]
+    # mercardorias.append(mercadoria)
+    # faturamento_mercadoria = quantidade * preco
+    # faturamento += faturamento_mercadoria
 
-print("O faturamento mensal do armazém é: ", faturamento)
-print(mercardorias)
+# print("O faturamento mensal do armazém é: ", faturamento)
+# print(mercardorias)
 
+# Exercise 05:
+
+string = input("Digite uma string: ")
+vogais = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+espaco = [' ']
+
+for caracter in string:
+    for caracter_vogal in vogais and espaco:
+        if caracter == caracter_vogal:
+            print("Existe vogais e espaco")
