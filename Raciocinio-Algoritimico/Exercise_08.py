@@ -74,11 +74,18 @@
 
 # Exercise 05:
 
-string = input("Digite uma string: ")
-vogais = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
-espaco = [' ']
-
-for caracter in string:
-    for caracter_vogal in vogais and espaco:
-        if caracter == caracter_vogal:
-            print("Existe vogais e espaco")
+texto = input("Digite um texto: ")
+contVogal = 0
+contEspaco = 0
+for cont in range(len(texto)):
+    if texto[cont] == 'a' or texto[cont] == 'A' \
+        or texto[cont] == 'e'or texto[cont] == 'E' \
+        or texto[cont] == 'i' or texto[cont] == 'I' \
+        or texto[cont] == 'o' or texto[cont] == 'O' \
+        or texto[cont] == 'u' or texto[cont] == 'U':
+        contVogal += 1
+    else:
+        if texto[cont] == ' ':
+            contEspaco += 1
+print("Vogais =", contVogal)
+print("Espaços =", contEspaco)
