@@ -48,16 +48,14 @@ matriz = [0] * numero_linhas
 for linha in range(numero_linhas):
     matriz[linha] = [0] * numero_colunas
 
-print(matriz)
 
 for linha in range(numero_linhas):
     for coluna in range(numero_colunas):
         matriz[linha][coluna] = float(input("Digite a nota do aluno:"))
-print(matriz)
 
 for linha in range(numero_linhas):
     soma = 0
     for coluna in range(numero_colunas):
         soma = soma + matriz[linha][coluna]
     media = soma/numero_colunas
-    print("Media =", media)
+print("Media =", media)
