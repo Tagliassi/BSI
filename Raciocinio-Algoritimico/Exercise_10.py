@@ -21,22 +21,43 @@
 
 # Exemplo 01:
 
-nLinhas = 2
-nColunas = 2
-matriz = [0] * nLinhas
+#nLinhas = 2
+#nColunas = 2
+#matriz = [0] * nLinhas
 
-for linha in range(nLinhas):
-    matriz[linha] = [0] * nColunas
+#for linha in range(nLinhas):
+    #matriz[linha] = [0] * nColunas
 
-for linha in range(nLinhas):
-    for coluna in range(nColunas):
-        matriz[linha][coluna] = int(input('Digite um número: '))
+#for linha in range(nLinhas):
+    #for coluna in range(nColunas):
+        #matriz[linha][coluna] = int(input('Digite um número: '))
+#print(matriz)
+
+#for linha in range(nLinhas):
+    #soma = 0
+    #for coluna in range(nColunas):
+        #soma = soma + matriz[linha][coluna]
+    #print('Soma na linha ', linha, ' = ', soma)
+
+# Exercise 01:
+
+numero_linhas = 3
+numero_colunas = 4
+matriz = [0] * numero_linhas
+
+for linha in range(numero_linhas):
+    matriz[linha] = [0] * numero_colunas
+
 print(matriz)
 
-for linha in range(nLinhas):
+for linha in range(numero_linhas):
+    for coluna in range(numero_colunas):
+        matriz[linha][coluna] = float(input("Digite a nota do aluno:"))
+print(matriz)
+
+for linha in range(numero_linhas):
     soma = 0
-    for coluna in range(nColunas):
+    for coluna in range(numero_colunas):
         soma = soma + matriz[linha][coluna]
-    print('Soma na linha ', linha, ' = ', soma)
-
-
+    media = soma/numero_colunas
+    print("Media =", media)
