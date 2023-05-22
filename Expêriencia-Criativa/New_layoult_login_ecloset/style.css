@@ -128,7 +128,7 @@ button:active {
 }
 
 button:focus {
-  outline: none;
+  outline: thick solid #F2D22E;
 }
 
 /* Estilos para botões de efeito ghost */
