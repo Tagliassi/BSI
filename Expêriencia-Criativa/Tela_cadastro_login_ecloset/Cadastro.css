@@ -1,34 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,400;0,700;1,100;1,200;1,700&display=swap');
 
-*{
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
-body{
-  width: 0%;
-  height: 900px;
-  font-family: 'Exo';
-  background: linear-gradient(-45deg, #ffce51, #ff7253, #fd5754);
+
+/* Estilo básico do formulário */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ccc;
+  border-radius: 5px;
 }
-img{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-25%, -30%);
+
+h1 {
+  text-align: center;
 }
-h1{
-  font-size: 30px;
-  margin-bottom: -15px;
+
+/* Estilo dos rótulos */
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
-form{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(200%, -40%);
-  background-color: #ffff;
-  border-radius: 10px;
-  padding: 60px;
-  width: min-content;
-  border: 3px solid;
-  border-color: rgb(255, 255, 255);
+
+/* Estilo dos campos de entrada */
+.form-input {
+  width: 94.5%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Estilo do botão */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Estilo da imagem */
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 20px;
 }
