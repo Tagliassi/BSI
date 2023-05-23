@@ -139,28 +139,29 @@ button.ghost {
 }
 
 /* Estilos para ícones dentro dos botões de efeito ghost */
-button.ghost i {
+
+button.ghost .left-arrow {
   position: absolute;
-  opacity: 0;
+  left: 100px;
+  top: 8px; left: auto; right: 5px;
+}
+
+button.ghost .right-arrow {
+  position: absolute;
+  left: 100px;
+  top: 8px; left: -15px; right: 0;
+}
+
+button.ghost:hover .left-arrow {
+  left: -170px;
+  opacity: 1;
   transition: 0.3s ease-in-out;
 }
 
-button.ghost i.register {
-  right: 70px;
-}
-
-button.ghost i.login {
-  left: 70px;
-}
-
-button.ghost:hover i.register {
-  right: 40px;
+button.ghost:hover .right-arrow{
+  left: 5px;
   opacity: 1;
-}
-
-button.ghost:hover i.login {
-  left: 40px;
-  opacity: 1;
+  transition: 0.3s ease-in-out;
 }
 
 /* Estilos para formulários */
