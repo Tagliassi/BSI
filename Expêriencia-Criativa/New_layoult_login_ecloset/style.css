@@ -140,30 +140,6 @@ button.ghost {
 
 /* Estilos para ícones dentro dos botões de efeito ghost */
 
-button.ghost .left-arrow {
-  position: absolute;
-  left: 100px;
-  top: 8px; left: auto; right: 5px;
-}
-
-button.ghost .right-arrow {
-  position: absolute;
-  left: 100px;
-  top: 8px; left: -15px; right: 0;
-}
-
-button.ghost:hover .left-arrow {
-  left: -170px;
-  opacity: 1;
-  transition: 0.3s ease-in-out;
-}
-
-button.ghost:hover .right-arrow{
-  left: 5px;
-  opacity: 1;
-  transition: 0.3s ease-in-out;
-}
-
 /* Estilos para formulários */
 form {
   background-color: #fff;
@@ -231,20 +207,6 @@ input {
   opacity: 1;
   z-index: 5;
   animation: show 0.6s;
-}
-
-@keyframes show {
-  0%,
-  49.99% {
-    opacity: 0;
-    z-index: 1;
-  }
-
-  50%,
-  100% {
-    opacity: 1;
-    z-index: 5;
-  }
 }
 
 /* Estilos para o overlay */
