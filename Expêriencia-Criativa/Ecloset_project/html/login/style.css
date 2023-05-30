@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins");
 
-/* Definições gerais */
+/* Definições gerais de posicionamento e dimensão de elementos */
 * {
   box-sizing: border-box;
 }
@@ -187,7 +187,6 @@ input {
   width: 50%;
   z-index: 2;
 }
-
 
 /* Estilos para o container quando o formulário de login está ativo */
 .container.right-panel-active .login-container {

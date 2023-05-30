@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro/Login - Ecloset</title>
+    <link rel="stylesheet" href="Novo_style.css">
+</head>
+
+<a href="./../pagina.html">
+    <img src="Logo_Ecloset.png" alt="Imagem não encontrada" class="logo">
+  </a>
+
+<body>
+    <div class="bloco-principal" id="bloco-principal">
+        <!-- Formulário de cadastro -->
+        <div class="bloco-formulario bloco-cadastro">
+            <form>
+                <h1>Cadastre-se aqui.</h1>
+                <input type="text" placeholder="Digite seu nome completo">
+                <input type="email" placeholder="Digite o seu Email">
+                <input type="tel" placeholder="(**) ****-****"/>
+                <input type="password" placeholder="Digite a sua senha">
+                <input type="password" placeholder="Confirme a sua senha" id="confirmar_senha" required>
+                <button>Cadastre-Se</button>
+                <span>Ou entre com sua conta:</span>
+                <div class="bloco_contas">
+                    <a href="facebook.svg" class="facebook"></a>
+                    <a href="google.svg" class="google"></a>
+                    <a href="apple.svg" class="apple"></a>
+                </div>
+            </form>
+        </div> 
+        <!-- Formulário de login -->
+        <div class="bloco-formulario bloco-login">
+            <form>
+                <h1>Faça login aqui.</h1>
+                <input type="email" placeholder="Digite o seu Email">
+                <input type="password" placeholder="Digite a sua Senha">
+                <div class="bloco-conteudo-login">
+                    <div class="checkbox">
+                        <input type="checkbox" id="checkbox">
+                        <label for="checkbox">Lembre-me</label>
+                    </div>
+                    <div class="bloco-recuperar-senha">
+                        <a href="#">Recuperar a senha</a>
+                    </div>
+                </div>
+                <button>Login</button>
+                <span>Ou entre com sua conta:</span>
+                <div class="bloco-contas">
+                    <a href="facebook.svg" class="facebook"></a>
+                    <a href="google.svg" class="google"></a>
+                    <a href="apple.svg" class="apple"></a>
+                </div>
+            </form>
+        </div>
+        <!-- Sobreposição entre os formulários -->
+        <div class="bloco-sobreposicao">
+            <div class="conteudo-sobreposicao">
+                <div class="painel-sobreposicao painel-esquerdo">
+                    <h1 class="titulo-painel titulo-esquerdo">Olá <br> usuário</h1>
+                    <p>Se você tem uma conta, faça login aqui.</p>
+                    <button class="fantasma" id="login">Login</button>
+                </div>
+                <div class="painel-sobreposicao painel-direito">
+                    <h1 class="titulo-painel titulo-direito">Se cadastre-se <br> agora!</h1>
+                    <p>Se você não tem uma conta, cadastre-se aqui.</p>
+                    <button class="fantasma" id="cadastro">Cadastrar-se</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Novo_script.js"></script>
+</body>
+</html>
