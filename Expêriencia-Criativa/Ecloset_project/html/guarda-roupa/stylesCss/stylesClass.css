@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap');
+@import './../../style.css';
+
+body {
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+}
+.textos {
+  color: rgb(31, 31, 31);
+}
+
+body {
+    background-image: linear-gradient(45deg, #062173, #a60512);
+}
+
+.container {
+    display: flex;
+    padding: 2rem;
+    width: 70%;
+    background-color: rgb(255, 255, 255);
+    margin: 5%;
+    padding: 4%;
+    border-radius: 2%;
+    margin-left: 1%;
+    box-sizing: content-box;
+    border: 5px solid #686A8C;
+    border-radius: 60px;
+    margin-top: 10%;
+}
+.contRoupa{
+    justify-content: space-around;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    
+    
+}   
+.container-right{
+   width: 100%;
+   margin-left: 20px;
+  
+}
+.roupa {
+    
+    border-radius: 10px;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    
+}
+.linha {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    
+}
+.item{
+    align-items: center;
+    margin-left: 80%;
+    height: 40px;
+}
