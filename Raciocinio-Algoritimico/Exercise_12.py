@@ -35,3 +35,6 @@ print(matriz_alturas)
 print(media_alturas)
 print(altura_maior)
 print(altura_menor)
+
+# Desafio:
+
