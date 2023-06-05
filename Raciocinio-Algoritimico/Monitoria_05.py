@@ -1,34 +1,33 @@
-#Tuplas e dicionários
-
-#meu_dicionario = {"chave_1" : "item1", "chave_2" : "item2"}
-#meu_dicionario = {}
-
-#minha_tupla = ("item1","item2","item3")
-#minha_tupla = ()
-
-pokedex = {"GENGAR" :{
-    "TIPO" : "GHOST",
-    "ATAQUES" : ("SHADOW BALL", "LICK", "BITE")
-    },
-    "VOLTORB" :
-    {
-        "TIPO" : "ELETRICO",
-        "ATAQUES" :  ("THUNDEBOLT", "HEADBUTT", "SHOCKWAVE") 
-     },
-    "GROWLITHE" :
-    {
-        "TIPO" : ("FOGO", "NORMAL"),
-        "ATAQUES" :  ("CHARGE", "FLAMETHROWER", "SCRATCH") 
-     }
-
-    }
+pokedex = {"GENGAR" : 
+           {  "TIPO" : "GHOST", 
+            "ATAQUES" : ("SHADOW BALL", "LICK", "BITE"),
+            "VIDA" : 12
+           },
+           "VOLTORB" :
+           {
+             "TIPO" : "ELETRICO",
+             "ATAQUES" : ("THUNDERBOLT", "HEADBUTT", "SHOCKWAVE"),
+             "VIDA" : -20
+           },
+           "GROWLITHE" :
+           {
+             "TIPO" : ("FOGO", "NORMAL"),
+             "ATAQUES" : ("CHARGE", "FLAMETHROWER", "SCRATCH"),
+             "VIDA" : 12
+           }      
+          }
 
 comando = 0
 
-while comando != 9:
-    comando = input("Insira um nome de um pokemon para consultar suas informacoes \n ou insira 9 para encerrar: ")
+def estaVivo(vidaPokemon):
+  if vidaPokemon > 0:
+    print("Esta Vivo")
+  else :
+    print("Esta Morto")
 
-    if comando != 9:
-        print(pokedex.get(comando))
-    else:
-        print("Volte sempre")
+while(comando != 9):
+
+  comando = input("Insira um nome de pokemon para obter suas informações! \n Ou insira 9 para encerrar: ")
+
+  pokemon = pokedex.get(comando)
+  estaVivo(pokemon.get("VIDA"))
