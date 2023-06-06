@@ -72,3 +72,44 @@ def depositar(novo_saldo):
     global saldo
     saldo += novo_saldo
 
+# Exercise 03:
+
+alfabeto = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','y','z']
+
+palavra = input("Digite a palavra que deseja criptografar: ")
+letras = list(palavra)
+
+palavra_criptografada = []
+
+for letra in range (len(letras)):
+    for caracter in range(len(alfabeto)):
+        if letras[letra] == alfabeto[caracter]:
+            palavra_criptografada.append(alfabeto[caracter + 3])
+
+print(palavra_criptografada)
+
+# Exercise 04(Recursividade):
+
+Fibonacci = 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+def fibo(n):
+    if n <= 2:
+        return 1
+    else:
+        return fibo(n - 2) + fibo(n - 1)
+
+print(fibo(3))
+
+# Desafio (torre de hanoi)
+
+def hanoi(discos, origem, destino, temp):
+    if discos == 1:
+        print("Mova o disco", discos, "de", origem, "para", destino)
+    else:
+        hanoi(discos - 1, origem, temp, destino)
+        print("Mova o disco", discos, "de", origem, "para", destino)
+        hanoi(discos - 1, temp, destino, origem)
+
+print("Digite o número de discos:")
+total_discos = int(input())
+hanoi(total_discos, 'A', 'B', 'C')
