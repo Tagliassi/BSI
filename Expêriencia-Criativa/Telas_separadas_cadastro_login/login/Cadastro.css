@@ -8,7 +8,7 @@
     .logo {
     position: relative;
     display: block;
-    top: -50px; bottom: 0px; right: 0px; left: 0px;
+    top: -50px; 
     margin: 0, auto;
     max-width: 400px;
     max-height: 200px;
@@ -64,32 +64,6 @@
     color: #A60512;
     }
 
-    .bloco-conteudo-login {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: space-around;
-    }
-
-    .bloco-conteudo-login .checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    }
-
-    .bloco-conteudo-login input {
-    accent-color: #ff0000;
-    width: 12px;
-    height: 12px;
-    }
-
-    .bloco-conteudo-login label {
-    font-size: 14px;
-    padding-left: 5px;
-    user-select: none;
-    }
-
     button {
     position: relative;
     border-radius: 20px;
@@ -114,12 +88,6 @@
 
     button:focus {
     outline: thick solid #F2D22E;
-    }
-
-    button.fantasma {
-    background-color: rgba(225, 225, 225, 0.2);
-    border: 2px solid #fff;
-    color: #fff;
     }
 
     form {
@@ -157,61 +125,30 @@
 
     .bloco-formulario {
     position: absolute;
-    top: 0;
-    height: 75%;
-    transition: all 0.6s ease-in-out;
-    }
-
-    .bloco-login {
-    top:  10px;
-    width: 50%;
-    z-index: 2;
-    }
-
-    .bloco-principal.painel-direito-ativado .bloco-login {
-    transform: translateX(100%);
+    height: 80%;
     }
 
     .bloco-cadastro {
     top:  10px;
+    left: 500px;
     width: 50%;
-    z-index: 1;
-    opacity: 0;
-    }
-
-    .bloco-principal.painel-direito-ativado .bloco-cadastro {
-    transform: translateX(100%);
-    z-index: 5;
-    opacity: 1;
     }
 
     .bloco-sobreposicao {
     position: absolute;
-    left: 50%;
+    left: 0%;
     width: 50%;
     height: 100%;
     overflow: hidden;
-    transition: transform 0.6s ease-in-out;
-    z-index: 100;
-    }
-
-    .bloco-principal.painel-direito-ativado .bloco-sobreposicao {
-    transform: translate(-100%);
     }
 
     .conteudo-sobreposicao {
     position: relative;
-    left: -100%;
+    left: 0%;
     height: 100%;
     width: 200%;
     color: #fff;
     background: linear-gradient(to top, #A60512 40%, #F2D22E);
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
-    }
-
-    .bloco-principal.painel-direito-ativado .conteudo-sobreposicao {
-    transform: translateX(50%);
     }
 
     .painel-sobreposicao {
@@ -225,61 +162,4 @@
     top: 0;
     height: 100%;
     width: 50%;
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
-    }
-
-    .painel-esquerdo {
-    transform: translateX(-20%);
-    }
-
-    /* Estilos para o painel da esquerda quando o formulário de login está ativo */
-    .bloco-principal.painel-direito-ativado .painel-esquerdo {
-    transform: translateX(0);
-    }
-
-    .painel-direito {
-    right: 0;
-    transform: translateX(0);
-    }
-
-    /* Estilos para o painel da direita quando o formulário de cadastro está ativo */
-    .bloco-principal.painel-direito-ativado .painel-direito {
-    transform: translateX(20%);
-    }
-
-    /* Estilos para os contêineres sociais */
-    .bloco-contas {
-    margin: 10px 0;
-    }
-
-    .bloco-contas a {
-    border: 1px solid #dddddd;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-    transition: 0.3s ease-in-out;
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    }
-
-    .bloco-contas a.apple {
-    background-image: url(apple.svg);
-    }
-
-    .bloco-contas a.google {
-    background-image: url(google.svg);
-    }
-
-    .bloco-contas a.facebook {
-    background-image: url(facebook.svg);
-    }
-
-    .bloco-contas a:hover {
-    border: 1px solid #A60512;
     }
