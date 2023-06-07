@@ -11,8 +11,8 @@ relatorios_de_pagamento = []  # Matriz para armazenar informações de vendas: Q
 pagamentos_dinheiro = [] # Lista para armazenar os pagamentos em dinheiro
 pagamentos_pix = [] # Lista para armazenar os pagamentos via PIX
 # Matriz para armazenar a quantidade de dinheiro por tipo (cédulas e moedas)
-# Moedas de 0.25, 0.5, 1.0 // Cédulas de 2, 5, 10
-quantidade_dinheiro = [[0, 0, 0],[0, 0, 0]]
+# Moedas de 0.25, 0.5, 1.0 // Cédulas de 2, 5, 10 // valor_total_pix 
+quantidade_dinheiro = [[0, 0, 0],[0, 0, 0],[0]]
 
 def login(usuario, senha):
     # Implementar a lógica de autenticação
@@ -34,7 +34,9 @@ def visualizar_quantidade_dinheiro():
     print("Cédulas:")
     print(f"2: {quantidade_dinheiro[1][0]}")
     print(f"5: {quantidade_dinheiro[1][1]}")
-    print(f"10: {quantidade_dinheiro[1][2]}")
+    print(f"10: {quantidade_dinheiro[1][2]}") 
+    print("PIX:")
+    print("valor total pix = ", quantidade_dinheiro[2][0])
 
 def modificar_quantidade_dinheiro():
     print("Modificar quantidade de dinheiro por tipo:")
@@ -53,10 +55,6 @@ def atualizar_quantidade_dinheiro(valor_inserido):
 
 def realizar_pagamento(refrigerante, quantidade, opcao_pagamento):
     # Implementar a lógica para pagamento dos produtos, via pix ou dinheiro.
-    pass
-
-def entregar_produto(refrigerante, quantidade):
-    # Implementar a lógica para entregar o produto ao consumidor
     pass
 
 def main():
