@@ -68,7 +68,7 @@ def main():
         opcao = input("Opção: ")
 
         if opcao == "1":
-            usuario = input("Usuário: ")
+            usuario = "Administrador"
             senha = input("Senha: ")
             if login(usuario, senha):
                 print("Login do administrador bem-sucedido.")
