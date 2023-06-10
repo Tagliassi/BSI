@@ -36,7 +36,6 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #0033ff;
     padding: 10px;
     width: 50%;
 }
@@ -120,7 +119,6 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #ff0000;
     padding: 10px;
     width: 50%;
 }
@@ -192,11 +190,27 @@ body{
         }
     
         .about-educação_02 p.descrição-educação_02{
-            font-size: 12px;
-            font-weight: normal;
+            font-size: 15px;
+            font-weight: bold;
             text-align: justify;
-            margin: -12px 24px;
+            margin: 0px 24px;
         }
+
+        .about-educação_02 p.descrição-educação_03{
+            font-size: 15px;
+            font-weight: bold;
+            text-align: justify;
+            margin: 20px 24px;
+        }
+        
+    img{
+        position: absolute;
+        display: flex;
+        width: 10%;
+        height: 10%;
+        top: 270px;
+        left: 550px;
+    }
 
 button {
     align-items: center;
