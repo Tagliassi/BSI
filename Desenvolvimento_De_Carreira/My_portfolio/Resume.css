@@ -24,24 +24,179 @@ body{
     background-color: #1a2a6c20;
 }
 
-.trabalho {
+.container {
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 500px;
-    height: 400px;
-    border-radius: 25px;
-    background-color: #ffffff;
-    box-shadow: 0 14px 28px #00000040, 0 10px 10px #00000038;
-    margin: 120px auto;
+    flex-direction: row;
+  }
+  
+.Experiencias-de-trabalho{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0033ff;
+    padding: 10px;
+    width: 50%;
 }
+    .trabalho_01 {
+        position: relative;
+        width: 50%;
+        width: 640px;
+        height: 320px;
+        border-radius: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 11.2px 22.4px #00000040, 0 8px 8px #00000038;
+        margin: 48px;
+    }
 
-span {
-    top: 5px;
-    font-size: 25px;
-    font-weight: 700;
+    .content-trabalho {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-left: 16px;
+        margin-top: -25px;
+    }
+
+    .content-trabalho span.experiencia_01{
+        font-size: medium;
+        font-weight: bold;
+        margin: 0px 8px;
+    }
+
+    .about p.descrição{
+        font-size: 12px;
+        font-weight: normal;
+        text-align: justify;
+        margin: 12px 24px;
+    }
+
+    span.title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: -56px;
+        font-size: 19.2px;
+        font-weight: 700;
+        margin: 12px;
+    }
+
+    .trabalho_02 {
+        position: relative;
+        width: 50%;
+        width: 640px;
+        height: 320px;
+        border-radius: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 11.2px 22.4px #00000040, 0 8px 8px #00000038;
+        margin: -32px 0px ;
+    }
+
+    .content-trabalho_02 {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-left: 16px;
+    }
+
+    .content-trabalho_02 span.experiencia_02{
+        font-size: medium;
+        font-weight: bold;
+        margin: 24px 8px;
+    }
+
+    .about_02 p.descrição_02{
+        font-size: 12px;
+        font-weight: normal;
+        text-align: justify;
+        margin: -12px 24px;
+    }
+
+
+.Educação{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ff0000;
+    padding: 10px;
+    width: 50%;
 }
+        .Educação_01 {
+            position: relative;
+            width: 50%;
+            width: 640px;
+            height: 320px;
+            border-radius: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 11.2px 22.4px #00000040, 0 8px 8px #00000038;
+            margin: 48px;
+        }
+    
+        .content-educação {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-left: 16px;
+            margin-top: -25px;
+        }
+    
+        .content-educação span.experiencia-educação_01{
+            font-size: medium;
+            font-weight: bold;
+            margin: 0px 8px;
+        }
+    
+        .about-educação p.descrição-educação{
+            font-size: 12px;
+            font-weight: normal;
+            text-align: justify;
+            margin: 12px 24px;
+        }
+    
+        span.title-educação {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: -56px;
+            font-size: 19.2px;
+            font-weight: 700;
+            margin: 12px;
+        }
+    
+        .Educação_02 {
+            position: relative;
+            width: 50%;
+            width: 640px;
+            height: 320px;
+            border-radius: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 11.2px 22.4px #00000040, 0 8px 8px #00000038;
+            margin: -32px 0px ;
+        }
+    
+        .content-educação_02 {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-left: 16px;
+        }
+    
+        .content-educação_02 span.experiencia-educação_02{
+            font-size: medium;
+            font-weight: bold;
+            margin: 24px 8px;
+        }
+    
+        .about-educação_02 p.descrição-educação_02{
+            font-size: 12px;
+            font-weight: normal;
+            text-align: justify;
+            margin: -12px 24px;
+        }
 
 button {
     align-items: center;
