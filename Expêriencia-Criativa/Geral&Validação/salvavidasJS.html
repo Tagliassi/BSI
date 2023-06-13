@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01 - Javascript</title>
+    <script src="./salvavidasJS.js"></script>
+</head>
+<body>
+    <!-- Exemplo de validação input vazio -->
+    <h1>Validação de texto vazio</h1>
+    <span>Digite o seu nome:</span>
+    <!-- Veja que agora é importante colocarmos id nas tags, pois vamos usar no documento Javascript -->
+    <input type="text" id="name">
+    <!-- o atributo onclick é chamado toda vez que o botão for clicado
+        dentro das aspas duplas, eu posso colocar qualquer função javascript que esteja no meu script
+        ou também qualquer função padrão, como o console.log() por exemplo
+
+        veja que nesse exemplo abaixo, eu estou chamando a função validaInputVazio()
+        esta função está declarada dentro do meu arquivo salvavidas.js
+        toda vez que meu botão for clicado, ele irá executar as funcionalidades que eu implementar dentro desta função
+    -->
+    <button onclick="validaInputVazio()">Enviar</button>
+
+    <!-- Fim do exemplo de validação do input vazio -->
+
+
+    <!-- Exemplo de validação quantidade de caracteres -->
+    <h1>Validação de quantidade de caracteres do texto</h1>
+    <span>Digite o seu telefone:</span>
+    <!-- Veja que agora é importante colocarmos id nas tags, pois vamos usar no documento Javascript -->
+    <input type="text" id="tel">
+    <!-- 
+        veja que nesse novo exemplo abaixo, eu estou chamando a função validaQuantidadeDeCaracteres()
+        esta função está declarada dentro do meu arquivo salvavidas.js
+        toda vez que meu botão for clicado, ele irá executar as funcionalidades que eu implementar dentro desta função
+    -->
+    <button onclick="validaQuantidadeDeCaracteres()">Enviar</button>
+
+    <!-- Fim do exemplo de validação do input vazio -->
+</body>
+</html>

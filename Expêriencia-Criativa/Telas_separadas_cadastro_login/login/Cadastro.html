@@ -6,26 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro/Login - Ecloset</title>
     <link rel="stylesheet" href="Cadastro.css">
+    <script src="Cadastro.js"></script>
 </head>
 
-<a href="./../pagina.html">
-    <img src="Logo_Ecloset.png" alt="Imagem não encontrada" class="logo">
-  </a>
-
 <body>
+    <a href="./../pagina.html">
+        <img src="Logo_Ecloset.png" alt="Imagem não encontrada" class="logo">
+    </a>
+
     <div class="bloco-principal" id="bloco-principal">
         <!-- Formulário de cadastro -->
         <div class="bloco-formulario bloco-cadastro">
             <form>
                 <h1>Cadastre-se aqui.</h1>
-                <input type="text" placeholder="Digite seu nome completo">
-                <input type="email" placeholder="Digite o seu Email">
-                <input type="tel" placeholder="(**) ****-****"/>
-                <input type="password" placeholder="Digite a sua senha">
-                <input type="password" placeholder="Confirme a sua senha" id="confirmar_senha" required>
-                <button>Cadastre-Se</button>
+                <input type="text" id="nome" placeholder="Digite seu nome completo">
+                <input type="email" id="email" placeholder="Digite o seu Email">
+                <input type="tel" id="telefone" placeholder="(**) ****-****" />
+                <input type="password" id="senha" placeholder="Digite a sua senha">
+                <input type="password" id="confirmar_senha" placeholder="Confirme a sua senha" required>
+                <button type="button" onclick="validarFormulario()">Cadastre-Se</button>
             </form>
-        </div> 
+        </div>
         <!-- Sobreposição entre os formulários -->
         <div class="bloco-sobreposicao">
             <div class="conteudo-sobreposicao">
