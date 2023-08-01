@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro/Login - Ecloset</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<img src="Logo_Ecloset.png" alt="Imagem não encontrada">
+
+<body>
+  <div class="container" id="container">
+    <!-- Formulário de cadastro -->
+    <div class="form-container register-container">
+      <form action="#">
+        <h1>Cadastre-se aqui.</h1>
+        <input type="text" placeholder="Nome">
+        <input type="email" placeholder="Email">
+        <input type="tel" placeholder="(**) ****-****"/>
+        <input type="password" placeholder="Senha">
+        <input type="password" placeholder="Confirme sua senha" id="confirm_password" class="form-input" required>
+        <button>Cadastre-se</button>
+        <span>Ou use sua conta</span>
+        <div class="social-container">
+          <a href="facebook.svg" class="facebook"><i class="facebook-direction"></i></a>
+          <a href="google.svg" class="google"><i class="google-direction"></i></a>
+          <a href="apple.svg" class="apple"><i class="apple-direction"></i></a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Formulário de login -->
+    <div class="form-container login-container">
+      <form action="#">
+        <h1>Entre aqui.</h1>
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Senha">
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox">
+            <label for="checkbox">Lembre-me</label>
+          </div>
+          <div class="pass-link">
+            <a href="#">Esqueceu a senha?</a>
+          </div>
+        </div>
+        <button>Login</button>
+        <span>Ou use sua conta</span>
+        <div class="social-container">
+          <a href="facebook.svg" class="facebook"><i class="facebook-direction"></i></a>
+          <a href="google.svg" class="google"><i class="google-direction"></i></a>
+          <a href="apple.svg" class="apple"><i class="apple-direction"></i></a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Sobreposição entre os formulários -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1 class="title">Olá <br> usuário</h1>
+          <p>Se você tem uma conta, entre aqui</p>
+          <button class="ghost" id="login">Login
+          </button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1 class="title">Se inscreva <br> agora</h1>
+          <p>Se você não tem uma conta, cadastre-se aqui.</p>
+          <button class="ghost" id="register">Cadastrar-se
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
