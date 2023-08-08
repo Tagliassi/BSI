@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(255, 244, 206);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px;
+}
+
+form{
+    display: flex;
+    background-color: #2f2c2ccd;
+    border-radius: 30px;
+    justify-content: top;
+    align-items: left;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    height: auto;
+    width: 400px;
+    padding: 60px;
+    color: white;
+    letter-spacing: normal;
+    line-height: 60px;
+}
+
+input#urNameSend{
+    display: flex;
+    background-color: #ffffffcd;
+    border-radius: 60px;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+    padding: 15px;
+    font-weight: bolder;
+    font-size: 18px;
+}

@@ -10,16 +10,22 @@
 <body>
     <h1>Your information</h1>
     <form action="" name="ur information" id="ur information" b method="get" enctype="text/plain">
-        <label for="urName"> Digite o seu nome: </label>
-        <input type="text" name="urName" id="UrName" >
-        <input type="submit" name="urNameSend" id="urNameSend" value="Send">
-        <label for="chkAge"> É maior de idade? </label>
-        <input type="checkbox" name="chkAge" id="chkAge" value="1">
-        <label for="optSex"> Selecione seu sexo: </label>
-        <input type="radio" name="sex" id="sex1" value="Masculino">
-        <label for="sex1">Masculino</label>
-        <input type="radio" name="sex" id="sex2" value="Feminino">
-        <label for="sex1">Feminino</label>
+        <div class="content">
+            <div class="your_name">
+                <label for="urName"> Digite o seu nome: </label>
+                <input type="text" name="urName" id="UrName" >
+            </div>
+            <div class="checkbox1">
+                <label for="chkAge"> É maior de idade? </label>
+                <input type="checkbox" name="chkAge" id="chkAge" value="1">
+            </div>
+            <label for="optSex"> Selecione seu sexo: </label>
+            <input type="radio" name="sex" id="sex1" value="Masculino">
+            <label for="sex1">Masculino</label>
+            <input type="radio" name="sex" id="sex2" value="Feminino">
+            <label for="sex1">Feminino</label>
+            <input type="submit" name="urNameSend" id="urNameSend" value="Send">
+        </div>
     </form>
 </body>
 </html>
