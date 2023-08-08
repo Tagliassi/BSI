@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Aula 02 - Regex</title>
+        <style>
+            body {
+                color: #FFF;
+                font-size: 25px;
+            }
+            .textbox {
+                font-size: 25px;
+            }
+            .buttons {
+                font-size: 20px;
+                width: 100px;
+                height: 35px;
+            }
+        </style>
+    </head>
+    <body bgcolor="#009900">
+        <p align="center">Expressões Regulares - Regex</span>
+        <center>
+        <form name="form1" id="form1" action="" enctype="text/plain" method="get">
+            <input type="text" id="txtText" name="txtText" style="width: 600px;" class="textbox"/><br><br>
+            <input type="button" id="cmdSend" name="cmdSend" onclick="cmdSendOnClick()" value="Enviar" class="buttons"/>
+        </form>
+        </center>
+    </body>
+    <script>
+
+        function cmdSendOnClick() {
+            let cep = form1.txtText.value;
+            if (isCEP(cep)){
+                alert('is a valid cep!!!');
+            }
+            else{
+                alert('Error');
+            }
+        }
+
+        function isCEP(cep){
+            const re = /^\d{2}\.?\d{3}-?\d{3}$/;
+            return re.test(cep);
+        }
+
+    </script>
+</html>

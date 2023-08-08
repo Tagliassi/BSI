@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Aula 02 - Regex</title>
+        <style>
+            body {
+                color: #FFF;
+                font-size: 25px;
+            }
+            .textbox {
+                font-size: 25px;
+            }
+            .buttons {
+                font-size: 20px;
+                width: 100px;
+                height: 35px;
+            }
+        </style>
+    </head>
+    <body bgcolor="#009900">
+        <p align="center">Expressões Regulares - Regex</span>
+        <center>
+        <form name="form1" id="form1" action="" enctype="text/plain" method="get">
+            <input type="text" id="txtText" name="txtText" style="width: 600px;" class="textbox"/><br><br>
+            <input type="button" id="cmdSend" name="cmdSend" onclick="cmdSendOnClick()" value="Enviar" class="buttons"/>
+        </form>
+        </center>
+    </body>
+    <script>
+
+        function cmdSendOnClick() {
+            let value = form1.txtText.value;
+            if (isVALUE(value)){
+                alert('is valid!!!');
+            }
+            else{
+                alert('Error');
+            }
+        }
+
+        /*/
+        function isVALUE(value){
+            const re = /^\d{3}[. ]?\d{3}[. ]?\d{3}[-/]?\d{2}$/;
+            return re.test(value);
+        }
+        /*/
+
+        /*/
+        function isVALUE(value){
+            const re = /o\b/;
+            return re.test(value);
+        }
+        /*/
+
+        function isVALUE(value){
+            const re = /^\b[aeiou][aeiou]\b $/;
+            return re.test(value);
+        }
+
+    </script>
+</html>
