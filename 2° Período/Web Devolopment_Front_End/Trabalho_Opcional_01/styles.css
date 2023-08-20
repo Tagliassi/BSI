@@ -1,0 +1,42 @@
+body {
+    background-color: #0e5a68;
+    color: #d7862a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 60px
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 70px;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+.game_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 20px;
+    font-size: 26px;
+    font-weight: bolder;
+}
+
+.game_info p {
+    margin: 0;
+}
