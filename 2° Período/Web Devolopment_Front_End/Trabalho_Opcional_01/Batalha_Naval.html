@@ -9,11 +9,51 @@
 </head>
 <body>
     <h1>Batalha Naval</h1>
+    <h2>Rafael Galafassi e Marcos Vinicius</h2>
+
+    <div class="intButton">
+        <input type="button" value="Iniciar Jogo" class="button button-init" id="button" onclick="onClickInitGame()">
+    </div>  
+
+    <div class="ChangeShot">
+        <select class="select-button" id="select-button">
+            <option value="1">Tiro Simples</option>
+            <option value="2">Bomba</option>
+            <option value="3">Bomba Atomica</option>
+        </select>
+    </div>
+
     <table id="grid"></table>
+    
+    <div class="radio_button" id="select_level_game">
+        <label for="optLevel"> 
+            Selecione o nível do jogo: 
+        </label>
+        <label for="level_01">
+            <input type="radio" name="level" id="level_01" value="7">
+            7 Vidas
+        </label>
+        <label for="level_02">
+            <input type="radio" name="level" id="level_02" value="5">
+            5 Vidas
+        </label>
+        <label for="level_03">
+            <input type="radio" name="level" id="level_03" value="3">
+            3 Vidas
+        </label>
+        <input type="submit" name="urLevelSend" id="lifeSelected" class="button" value="Selecionar">   
+    </div>
+
+    <div class="checkbox" id="disableMessages">
+        <label for="chkAge"> Ocultar Mensagens? </label>
+        <input type="checkbox" name="chkDisable" id="chkDisable" value="1">
+    </div>
+
     <div class="game_info">
         <p>Pontos: <span id="score">0</span></p>
         <p>Vida: <span id="life">3</span></p>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
