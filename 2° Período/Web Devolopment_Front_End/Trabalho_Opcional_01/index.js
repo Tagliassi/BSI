@@ -1,185 +1,99 @@
 const gridRows = 8;
 const gridCols = 12;
-const maxShips = 25;
-const ships = generateShips(maxShips);
+
+const WATER = 0;
+const SUBMARINE = 1;
+const BOMB = 2;
+const ATOMIC_BOMB = 3;
+const SHIP = 4;
+
+const shipScores = {
+    [SUBMARINE]: 50,       // Pontuação para submarinos
+    [BOMB]: 0,          // Pontuação para bombas
+    [ATOMIC_BOMB]: 0,   // Pontuação para bombas atômicas
+    [SHIP]: 20,            // Pontuação para navios
+};
+
+const shipNames = {
+    [SUBMARINE]: "Submarino",
+    [BOMB]: "Bomba",
+    [ATOMIC_BOMB]: "Bomba Atômica",
+    [SHIP]: "Navio",
+};
+
+
+const shipCounts = {
+    [SUBMARINE]: 10,
+    [BOMB]: 1,
+    [ATOMIC_BOMB]: 1,
+    [SHIP]: 40,
+};
+
+const grid = document.getElementById("grid");
+const scoreElement = document.getElementById("score");
+const lifeElement = document.getElementById("life");
+
 let score = 0;
 let life = 3;
 
-const grid = document.getElementById("grid");
-const button = document.getElementById("button");
+const ships = [];
 
-// Attach event listener for life selection
-const elemento = document.getElementById("lifeSelected");
-elemento.addEventListener("click", (e) => {
-    var selectedValue = "";
-    var radioButtons = document.getElementsByName("level");
-    for (var i = 0; i < radioButtons.length; i++) {
-        if (radioButtons[i].checked) {
-            selectedValue = radioButtons[i].value;
-            break;
+function generateShips() {
+    for (let i = 0; i < gridRows; i++) {
+        ships.push([]);
+        for (let j = 0; j < gridCols; j++) {
+            ships[i][j] = WATER;
         }
     }
-    changeLife(parseInt(selectedValue));
-});
 
-// Toggle message disable checkbox
-document.getElementById('checkbox').onclick = function() {
-    var disabled = document.getElementById("disableMessages").disabled;
-    document.getElementById("disableMessages").disabled = !disabled;
-};
-
-// Initialize the game
-function onClickInitGame() {
-    if (button.value == "Iniciar Jogo") {
-        createCards();
-        button.value = "Reiniciar jogo";
-        button.classList.toggle("visible");
-    } else {
-        location.reload();
-    }
-}
-
-// Generate ships and bombs
-function generateShips(numShips) {
-    const generatedShips = [];
-    for (let i = 0; i < numShips; i++) {
-        // Generate ship
-        const shipRow = Math.floor(Math.random() * gridRows);
-        const shipCol = Math.floor(Math.random() * gridCols);
-        generatedShips.push([shipRow, shipCol]);
-
-        // Generate submarines
-        for (let j = 0; j < 3; j++) {
-            const subRow = Math.floor(Math.random() * gridRows);
-            const subCol = Math.floor(Math.random() * gridCols);
-            generatedShips.push([subRow, subCol]);
-        }
-
-        // Generate bomb
-        const bombRow = Math.floor(Math.random() * gridRows);
-        const bombCol = Math.floor(Math.random() * gridCols);
-        generatedShips.push([bombRow, bombCol]);
-
-        // Generate atomic bomb
-        const atomBombRow = Math.floor(Math.random() * gridRows);
-        const atomBombCol = Math.floor(Math.random() * gridCols);
-        generatedShips.push([atomBombRow, atomBombCol]);
-    }
-    return generatedShips;
-}
-
-// Update score and life
-function updateScoreAndLife(hit) {
-    if (hit) {
-        score += 100;
-        document.getElementById("score").textContent = score;
-    } else {
-        life -= 1;
-        document.getElementById("life").textContent = life;
-        if (life === 0) {
-            alert("Fim de jogo! O jogo será reiniciado.");
-            finishGame();
+    for (const shipType in shipCounts) {
+        for (let count = 0; count < shipCounts[shipType]; count++) {
+            placeShipRandomly(parseInt(shipType));
         }
     }
 }
 
-// Handle ship click
-function shipOnClick(row, col) {
-    
-    let cellId = "";
+function placeShipRandomly(shipType) {
+    let row, col;
+    do {
+        row = Math.floor(Math.random() * gridRows);
+        col = Math.floor(Math.random() * gridCols);
+    } while (ships[row][col] !== WATER);
 
-    const selectedButton = document.getElementById("select-button");
+    ships[row][col] = shipType;
+}
 
-    let selectedIndex = selectedButton.selectedIndex;
-    let selectedValue = selectedButton.options[selectedIndex].value;
+function shuffle() {
+    for (let i = 0; i < 1000; i++) {
+        let i1 = Math.floor(Math.random() * 8);
+        let j1 = Math.floor(Math.random() * 12);
+        let i2 = Math.floor(Math.random() * 8);
+        let j2 = Math.floor(Math.random() * 12);
+        let temp = ships[i1][j1];
+        ships[i1][j1] = ships[i2][j2];
+        ships[i2][j2] = temp;
+    }
+}
 
-    switch(parseInt(selectedValue)) {
-        case 1:
-            // normal
-            cellId = `ship_${row}_${col}`;
-            break;
-
-        case 2:
-            cellId = `ship_${row}_${col}`;
-            break;
-
-        case 3:
-            cellId = `ship_${row}_${col}`;
-            break;
-
+function getImage(type) {
+    switch (type) {
+        case WATER:
+            return "mar.jpg";
+        case SUBMARINE:
+            return "submarino.jpg";
+        case BOMB:
+            return "bomba.jpg";
+        case ATOMIC_BOMB:
+            return "bomba_atomica.jpg";
+        case SHIP:
+            return "navio.jpg";
         default:
-            break;
+            return "carta.jpg";
     }
-
-    const cell = document.getElementById(cellId);
-
-    if (isShipHit(row, col)) {
-        cell.src = "navio.jpg";
-        alert("Você encontrou um navio!");
-        updateScoreAndLife(true);
-    } else if (isSubmarineHit(row, col)) {
-        cell.src = "submarino.jpg";
-        alert("Você encontrou um submarino!");
-        updateScoreAndLife(true);
-    } else if (isBombHit(row, col)) {
-        cell.src = "bomba.jpg";
-        alert("Você encontrou uma bomba!");
-        updateScoreAndLife(false);
-    } else if (isAtomBombHit(row, col)) {
-        cell.src = "bomba_atomica.jpg";
-        alert("Você encontrou uma bomba atômica!");
-        updateScoreAndLife(false);
-    } else {
-        cell.src = "mar.jpg";
-        alert("Água! Tente novamente.");
-        updateScoreAndLife(false);
-    }
-
-    cell.onclick = null;
 }
 
-// Check if a ship was hit
-function isShipHit(row, col) {
-    for (const ship of ships) {
-        if (ship[0] === row && ship[1] === col) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// Check if a submarine was hit
-function isSubmarineHit(row, col) {
-    for (const ship of ships) {
-        if (ship[0] === row && ship[1] === col) {
-            return true;
-        }
-    }
-    return false;
-}
-// Check if a bomb was hit
-function isBombHit(row, col) {
-    for (const ship of ships) {
-        if (ship[1] === row && ship[2] === col) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// Check if an atomic bomb was hit
-function isAtomBombHit(row, col) {
-    for (const ship of ships){
-        if (ship[3] === row && ship[4] === col ){
-            return true;
-        }
-    }
-    return false;
-}
-
-// Create the grid cards
 function createCards() {
-    for (let i = 0; i < gridRows; i++) {    
+    for (let i = 0; i < gridRows; i++) {
         const row = document.createElement("tr");
         for (let j = 0; j < gridCols; j++) {
             const cell = document.createElement("td");
@@ -194,8 +108,108 @@ function createCards() {
     }
 }
 
-// Finish the game
-function finishGame() {
-    button.classList.toggle("visible");
-    grid.classList.add("visible");
+// Função para atualizar as vidas no jogo
+function updateLives(lives) {
+    const lifeSpan = document.getElementById("life");
+    lifeSpan.textContent = lives;
 }
+
+// Inicializa a quantidade de vidas
+updateLives(3); // Defina o valor inicial das vidas aqui
+
+function finishGame() {
+    // Coloque aqui o código para reiniciar o jogo, como resetar as variáveis de pontuação, vidas e cartas clicadas.
+    score = 0;
+    document.getElementById("score").textContent = score;
+    life = 3;
+    clickedCards.clear(); // Limpar as cartas clicadas
+
+    // Também é necessário restaurar as imagens das cartas para o estado inicial (imagem de carta virada para baixo).
+    const allCards = document.getElementsByTagName("img");
+    for (const card of allCards) {
+        card.src = "carta.jpg";
+    }
+
+    // Aqui você pode chamar a função que gera os navios e faz o embaralhamento novamente.
+    generateShips();
+    shuffle();
+}
+
+function updateScoreAndLife(hit, shipType) {
+    if (hit) {
+        score += shipScores[shipType]; // Usar a tabela de pontuações
+        document.getElementById("score").textContent = score;
+    } else {
+        life -= 1;
+        document.getElementById("life").textContent = life;
+        if (life === 0) {
+            alert("Fim de jogo! O jogo será reiniciado.");
+            finishGame();
+        }
+    }
+}
+
+function onClickInitGame() {
+    if (button.value == "Iniciar Jogo") {
+        generateShips();
+        shuffle();
+        createCards();
+        button.value = "Reiniciar jogo";
+        button.classList.toggle("visible");
+    } else {
+        location.reload();
+    }
+}
+
+const clickedCards = new Set(); // Keep track of already clicked cards
+
+function shipOnClick(row, col) {
+    const card = document.getElementById(`ship_${row}_${col}`);
+
+    // Check if the card has already been clicked
+    if (clickedCards.has(card)) {
+        return;
+    }
+
+    clickedCards.add(card); // Mark the card as clicked
+
+    const shipType = ships[row][col];
+
+    if (shipType === WATER) {
+        card.src = getImage(WATER);
+        updateScoreAndLife(false);
+    } else {
+        card.src = getImage(shipType);
+        updateScoreAndLife(true, shipType); // Passar o tipo de navio clicado
+        if (!document.getElementById("chkDisable").checked) {
+            const shipName = shipNames[shipType];
+            alert(`Você encontrou um ${shipName}!`);
+        }
+    }
+}
+
+
+// Função para lidar com o clique no botão "Selecionar"
+function handleLifeSelection() {
+    const levelRadios = document.getElementsByName("level");
+
+    let selectedLevel;
+    for (const radio of levelRadios) {
+        if (radio.checked) {
+            selectedLevel = parseInt(radio.value);
+            break;
+        }
+    }
+
+    if (selectedLevel === 3 || selectedLevel === 5 || selectedLevel === 7) {
+        updateLives(selectedLevel);
+    } else {
+        console.log("Nível de vidas inválido.");
+    }
+}
+
+document.getElementById("lifeSelected").addEventListener("click", handleLifeSelection);
+
+
+
+
