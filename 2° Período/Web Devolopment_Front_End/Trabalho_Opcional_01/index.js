@@ -1,3 +1,4 @@
+// Constants
 const gridRows = 8;
 const gridCols = 12;
 
@@ -8,11 +9,14 @@ const ATOMIC_BOMB = 3;
 const SHIP = 4;
 
 const shipScores = {
-    [SUBMARINE]: 50,       // Pontuação para submarinos
-    [BOMB]: 0,          // Pontuação para bombas
-    [ATOMIC_BOMB]: 0,   // Pontuação para bombas atômicas
-    [SHIP]: 20,            // Pontuação para navios
+    [SUBMARINE]: 50,       
+    [SHIP]: 20,            
 };
+
+let regularBombsStock = 1;
+let atomicBombsStock = 1;
+const maxRegularBombs = 2; 
+const maxAtomicBombs = 2; 
 
 const shipNames = {
     [SUBMARINE]: "Submarino",
@@ -21,7 +25,6 @@ const shipNames = {
     [SHIP]: "Navio",
 };
 
-
 const shipCounts = {
     [SUBMARINE]: 10,
     [BOMB]: 1,
@@ -29,52 +32,38 @@ const shipCounts = {
     [SHIP]: 40,
 };
 
+// HTML Elements
 const grid = document.getElementById("grid");
 const scoreElement = document.getElementById("score");
 const lifeElement = document.getElementById("life");
 
+// Game State
 let score = 0;
 let life = 3;
-
 const ships = [];
+const clickedCards = new Set();
 
-function generateShips() {
-    for (let i = 0; i < gridRows; i++) {
-        ships.push([]);
-        for (let j = 0; j < gridCols; j++) {
-            ships[i][j] = WATER;
+// Initialize the game
+function onClickInitGame() {
+    if (button.value == "Iniciar Jogo") {
+        generateShips();
+        shuffle();
+        createCards();
+        button.value = "Reiniciar jogo";
+        button.classList.toggle("visible");
+        const container02 = document.getElementById("button");
+        container02.style.display = "none";
+        const levelRadios = document.getElementsByName("level");
+        for (const radio of levelRadios) {
+            radio.disabled = true;
         }
-    }
 
-    for (const shipType in shipCounts) {
-        for (let count = 0; count < shipCounts[shipType]; count++) {
-            placeShipRandomly(parseInt(shipType));
-        }
+    } else {
+        location.reload();
     }
 }
 
-function placeShipRandomly(shipType) {
-    let row, col;
-    do {
-        row = Math.floor(Math.random() * gridRows);
-        col = Math.floor(Math.random() * gridCols);
-    } while (ships[row][col] !== WATER);
-
-    ships[row][col] = shipType;
-}
-
-function shuffle() {
-    for (let i = 0; i < 1000; i++) {
-        let i1 = Math.floor(Math.random() * 8);
-        let j1 = Math.floor(Math.random() * 12);
-        let i2 = Math.floor(Math.random() * 8);
-        let j2 = Math.floor(Math.random() * 12);
-        let temp = ships[i1][j1];
-        ships[i1][j1] = ships[i2][j2];
-        ships[i2][j2] = temp;
-    }
-}
-
+//return the images for each type of object
 function getImage(type) {
     switch (type) {
         case WATER:
@@ -92,6 +81,7 @@ function getImage(type) {
     }
 }
 
+// Create the game grid
 function createCards() {
     for (let i = 0; i < gridRows; i++) {
         const row = document.createElement("tr");
@@ -108,33 +98,183 @@ function createCards() {
     }
 }
 
-// Função para atualizar as vidas no jogo
-function updateLives(lives) {
-    const lifeSpan = document.getElementById("life");
-    lifeSpan.textContent = lives;
-}
-
-// Inicializa a quantidade de vidas
-updateLives(3); // Defina o valor inicial das vidas aqui
-
-function finishGame() {
-    // Coloque aqui o código para reiniciar o jogo, como resetar as variáveis de pontuação, vidas e cartas clicadas.
-    score = 0;
-    document.getElementById("score").textContent = score;
-    life = 3;
-    clickedCards.clear(); // Limpar as cartas clicadas
-
-    // Também é necessário restaurar as imagens das cartas para o estado inicial (imagem de carta virada para baixo).
-    const allCards = document.getElementsByTagName("img");
-    for (const card of allCards) {
-        card.src = "carta.jpg";
+// Generate the initial ship placements
+function generateShips() {
+    for (let i = 0; i < gridRows; i++) {
+        ships.push([]);
+        for (let j = 0; j < gridCols; j++) {
+            ships[i][j] = WATER;
+        }
     }
 
-    // Aqui você pode chamar a função que gera os navios e faz o embaralhamento novamente.
-    generateShips();
-    shuffle();
+    for (const shipType in shipCounts) {
+        for (let count = 0; count < shipCounts[shipType]; count++) {
+            placeShipRandomly(parseInt(shipType));
+        }
+    }
 }
 
+// Place a ship randomly on the grid
+function placeShipRandomly(shipType) {
+    let row, col;
+    do {
+        row = Math.floor(Math.random() * gridRows);
+        col = Math.floor(Math.random() * gridCols);
+    } while (ships[row][col] !== WATER);
+
+    ships[row][col] = shipType;
+}
+
+// Shuffle the ship placements
+function shuffle() {
+    for (let i = 0; i < 1000; i++) {
+        let i1 = Math.floor(Math.random() * 8);
+        let j1 = Math.floor(Math.random() * 12);
+        let i2 = Math.floor(Math.random() * 8);
+        let j2 = Math.floor(Math.random() * 12);
+        let temp = ships[i1][j1];
+        ships[i1][j1] = ships[i2][j2];
+        ships[i2][j2] = temp;
+    }
+}
+
+// Shot setup
+let shotType = "simple";
+
+// Receive the type of shot chosen
+document.getElementById("select-button").addEventListener("change", function(event) {
+    shotType = event.target.value;
+});
+
+
+function shipOnClick(row, col) {
+    const card = document.getElementById(`ship_${row}_${col}`);
+
+    // Check if the card has already been clicked
+    if (clickedCards.has(card)) {
+        return;
+    }
+
+    // Check if the player has used the maximum number of regular bombs
+    if (shotType === "bomb" && regularBombsStock >= maxRegularBombs) {
+        alert("You've used all your regular bombs!");
+        return;
+    }
+
+    // Check if the player has used the maximum number of atomic bombs
+    if (shotType === "atomic_bomb" && atomicBombsStock >= maxAtomicBombs) {
+        alert("You've used all your atomic bombs!");
+        return;
+    }
+
+    // Mark the card as clicked
+    clickedCards.add(card); 
+
+    const shipType = ships[row][col];
+
+    if (shipType === WATER) {
+        card.src = getImage(WATER);
+        updateScoreAndLife(false);
+    } else {
+        card.src = getImage(shipType);
+        updateScoreAndLife(true, shipType); 
+        if (!document.getElementById("chkDisable").checked) {
+            const shipName = shipNames[shipType];
+            alert(`Você encontrou um ${shipName}!`);
+        }
+    }
+        // Verificar se é uma bomba regular
+        if (shipType === BOMB) {
+            regularBombsStock++;
+            if (regularBombsStock > maxRegularBombs) {
+                regularBombsStock = maxRegularBombs;
+            }
+        }
+        // Verificar se é uma bomba atômica
+        if (shipType === ATOMIC_BOMB) {
+            atomicBombsStock++;
+            if (atomicBombsStock > maxAtomicBombs) {
+                atomicBombsStock = maxAtomicBombs;
+            }
+        }
+
+    if (shotType === "simple") {
+        revealTile(row, col);
+    } else if (shotType === "bomb") {
+        revealTilesInCross(row, col);
+    } else if (shotType === "atomic_bomb") {
+        revealTilesInSquare(row, col);
+    }
+}
+
+// Functions to reveal tiles based on shot types
+function revealTile(row, col) {
+    const revealSingleTile = (r, c) => {
+        const currentCard = document.getElementById(`ship_${r}_${c}`);
+        if (!clickedCards.has(currentCard)) {
+            clickedCards.add(currentCard);
+            const shipType = ships[r][c];
+            currentCard.src = getImage(shipType);
+            updateScoreAndLife(shipType !== WATER, shipType);
+        }
+    };
+    revealSingleTile(row, col);
+}
+
+function revealTilesInCross(row, col) {
+    const revealSingleTile = (r, c) => {
+        const currentCard = document.getElementById(`ship_${r}_${c}`);
+        if (!clickedCards.has(currentCard)) {
+            clickedCards.add(currentCard);
+            const shipType = ships[r][c];
+            currentCard.src = getImage(shipType);
+            updateScoreAndLife(shipType !== WATER, shipType);
+        }
+        // Increment the regular bombs used if the shot type is bomb
+        if (shotType === "bomb") {
+            regularBombsStock--;
+            if (regularBombsStock < 0) {
+                regularBombsStock = 0;
+            }
+        }
+    };
+
+    revealSingleTile(row, col); // Reveal the center tile
+
+    // Reveal tiles in cross pattern (up, down, left, right)
+    for (let offset of [-1, 1]) {
+        revealSingleTile(row + offset, col);
+        revealSingleTile(row, col + offset);
+    }
+}
+
+function revealTilesInSquare(row, col) {
+    const revealSingleTile = (r, c) => {
+        const currentCard = document.getElementById(`ship_${r}_${c}`);
+        if (!clickedCards.has(currentCard)) {
+            clickedCards.add(currentCard);
+            const shipType = ships[r][c];
+            currentCard.src = getImage(shipType);
+            updateScoreAndLife(shipType !== WATER, shipType);
+        }
+        // Increment the atomic bombs used if the shot type is atomic_bomb
+        if (shotType === "atomic_bomb") {
+            atomicBombsStock--;
+            if (atomicBombsStock < 0) {
+                atomicBombsStock = 0;
+            }
+        }
+    };
+
+    // Reveal tiles in a square pattern (3x3 grid)
+    for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+            revealSingleTile(row + i, col + j);
+        }
+    }
+}
+
+// Update the score and life based on a hit or miss
 function updateScoreAndLife(hit, shipType) {
     if (hit) {
         score += shipScores[shipType]; // Usar a tabela de pontuações
@@ -149,46 +289,7 @@ function updateScoreAndLife(hit, shipType) {
     }
 }
 
-function onClickInitGame() {
-    if (button.value == "Iniciar Jogo") {
-        generateShips();
-        shuffle();
-        createCards();
-        button.value = "Reiniciar jogo";
-        button.classList.toggle("visible");
-    } else {
-        location.reload();
-    }
-}
-
-const clickedCards = new Set(); // Keep track of already clicked cards
-
-function shipOnClick(row, col) {
-    const card = document.getElementById(`ship_${row}_${col}`);
-
-    // Check if the card has already been clicked
-    if (clickedCards.has(card)) {
-        return;
-    }
-
-    clickedCards.add(card); // Mark the card as clicked
-
-    const shipType = ships[row][col];
-
-    if (shipType === WATER) {
-        card.src = getImage(WATER);
-        updateScoreAndLife(false);
-    } else {
-        card.src = getImage(shipType);
-        updateScoreAndLife(true, shipType); // Passar o tipo de navio clicado
-        if (!document.getElementById("chkDisable").checked) {
-            const shipName = shipNames[shipType];
-            alert(`Você encontrou um ${shipName}!`);
-        }
-    }
-}
-
-
+// Handle the life selection radio button click
 // Função para lidar com o clique no botão "Selecionar"
 function handleLifeSelection() {
     const levelRadios = document.getElementsByName("level");
@@ -210,6 +311,40 @@ function handleLifeSelection() {
 
 document.getElementById("lifeSelected").addEventListener("click", handleLifeSelection);
 
+// Update the displayed life count
+function updateLives(lives) {
+    life = lives;
+    const lifeSpan = document.getElementById("life");
+    lifeSpan.textContent = life;
+}
 
+function resetBombCounters() {
+    regularBombsStock = 1;
+    atomicBombsStock = 1;
+}
 
+// Finish the game and reset everything
+function finishGame() {
+    // Coloque aqui o código para reiniciar o jogo, como resetar as variáveis de pontuação, vidas e cartas clicadas.
+    score = 0;
+    document.getElementById("score").textContent = score;
+    life = 3;
+    clickedCards.clear(); // Limpar as cartas clicadas
+    resetBombCounters()
 
+    // Também é necessário restaurar as imagens das cartas para o estado inicial (imagem de carta virada para baixo).
+    const allCards = document.getElementsByTagName("img");
+    for (const card of allCards) {
+        card.src = "carta.jpg";
+    }
+
+    // Aqui você pode chamar a função que gera os navios e faz o embaralhamento novamente.
+    const container02 = document.getElementById("button");
+    container02.style.display = "block";
+    grid.innerHTML = ""; 
+    generateShips();
+    shuffle();
+}
+
+// Initial setup for lives display
+updateLives(3);
