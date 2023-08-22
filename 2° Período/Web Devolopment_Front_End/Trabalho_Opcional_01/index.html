@@ -1,15 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batalha Naval</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Batalha Naval</h1>
 
-    <script src="script.js"></script>
+    <div class="container-wrapper">
+        <div class="top">
+            <div class="container_01">
+                <div class="title">
+                    <h1>Batalha Naval</h1>
+                    <h2>Rafael Galafassi e Marcos Vinicius</h2>
+                </div>
+                <div class="game_info">
+                    <p>Pontos: <span id="score">0</span></p>
+                    <p>Vida: <span id="life">3</span></p>
+                    <div class="ChangeShot">
+                        <select class="select-button" id="select-button">
+                            <option value="1">Tiro Simples</option>
+                            <option value="2">Bomba</option>
+                            <option value="3">Bomba Atomica</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sideBySide">
+            <table class="grid" id="grid"></table>
+            <div class="container_02">
+                <div class="radio_button" id="select_level_game">
+                    <label id="level_opt"  for="optLevel"> 
+                        Selecione o nível do jogo: 
+                    </label>
+                    <label for="level_01">
+                        <input type="radio" name="level" id="level_01" value="7">
+                        7 Vidas
+                    </label>
+                    <label for="level_02">
+                        <input type="radio" name="level" id="level_02" value="5">
+                        5 Vidas
+                    </label>
+                    <label for="level_03">
+                        <input type="radio" name="level" id="level_03" value="3">
+                        3 Vidas
+                    </label>
+                    <input type="submit" name="urLevelSend" id="lifeSelected" class="button" value="Selecionar">   
+                </div>
+                <div class="checkbox" id="disableMessages">
+                    <label for="chkAge"> Ocultar Mensagens? </label>
+                    <input type="checkbox" name="chkDisable" id="chkDisable" value="1">
+                </div>
+                <div class="initButton">
+                    <input type="button" value="Iniciar Jogo" class="button-init" id="button" onclick="onClickInitGame()">
+                </div>  
+            </div>
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+    
 </body>
 </html>

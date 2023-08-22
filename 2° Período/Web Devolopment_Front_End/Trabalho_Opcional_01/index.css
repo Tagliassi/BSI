@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0e5a68;
+  }
+
+.sideBySide {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex-direction: row;
+  margin: 0px 0px;
+  margin-bottom: 60px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    font-weight: bold;
+}
+
+.game_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; 
+    background-color: #093f49;
+    width: auto;
+    height: 40px;
+    color: #fff;
+}
+
+.game_info #score{
+    margin-right: 20px;
+}
+
+.select-button{
+    margin: 20px;
+}
+
+.container_02{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 20px;
+    margin-right: 100px;
+    line-height: 30px;
+    width: 175px;
+    background-color: #d7862a;
+    padding: 20px;
+    border-radius: 20px;
+    font-weight: bolder;
+    font-size: medium;
+    color: #000000;
+}
+
+.container_02 .initButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    margin-top: 10px;
+}
+
+input {
+    border-radius: 20px;
+    border: 1px solid #093f49;
+    background-color: #0e5a68;
+    color: #fff;
+    font-size: 10px;
+    font-weight: medium;
+    padding: auto;
+    width: auto;
+    height: auto;
+    margin: 4px;
+    letter-spacing: 1px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  input:hover {
+    background-color: #093f49;
+  }
+
+  input:focus{
+    outline: 1px solid #093f49;
+  }
+
+  .grid {
+    width: 50%; /* Adjust this value to your preference */
+    max-width: 800px; /* Set a maximum width if needed */
+    margin: 60px 0px 0px; /* Center the grid horizontally */
+    border-collapse: collapse; /* Remove space between cells */
+}
+
+.grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
