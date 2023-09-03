@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Aventura Fantástica</title>
+    <link rel="stylesheet" href="./../css/interface.css">
+</head>
+<body>
+    <div class="game-container">
+        <img src="./../../assets/cenario/tela-inicial.png" alt="Cena do Jogo" class="game-background">
+        <div class="game-description">
+            <p>Você está em uma floresta sombria. Um monstro se aproxima!</p>
+        </div>
+        <div class="player-status">
+            <p>Vida Atual do Player:</p>
+            <div class="hearts">
+                <img src="./../../assets/hearts.png" alt="Coração" class="heart">
+            </div>
+        </div>
+        <div class="game-controls">
+            <button id="move-left">←</button>
+            <button id="move-up">↑</button>
+            <button id="move-down">↓</button>
+            <button id="move-right">→</button>
+            <button id="attack">ATACAR</button>
+        </div>
+    </div>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
