@@ -1,11 +1,13 @@
 // Classe Localizacao
-class Localizacao {
-  constructor(name, descricao) {
+export class Localizacao {
+  constructor(name, descricao, imagem) {
       this.nome = name;
       this.descricao = descricao;
       this.monstro = null;
       this.evento = null;
       this.item = null;
+      this.personagem = false;
+      this.imagem = imagem;
   }
 
   // Método para definir um monstro no local
@@ -22,4 +24,12 @@ class Localizacao {
   setItem(item) {
       this.item = item;
   }
+
+  adicionarPersonagem(){
+    this.personagem = true;
+  }  
+  
+  removerPersonagem(){
+    this.personagem = false;
+  }  
 }
