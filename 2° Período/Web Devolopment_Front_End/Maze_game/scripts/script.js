@@ -4,7 +4,6 @@ import { Personagem } from "./mobs/personagem.js";
 import { GameMap } from "./gameMap.js";
 
 
-
 // Função para iniciar o jogo
 function startGame() {
   const playerName = prompt("Qual é o seu nome?");

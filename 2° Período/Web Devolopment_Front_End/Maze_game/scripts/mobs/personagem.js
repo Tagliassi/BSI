@@ -13,7 +13,7 @@ export class Personagem {
   // Método para atualizar os corações com base na vida atual do jogador
   atualizarCoracoes() {
     const heartsContainer = document.querySelector(".hearts");
-    const caminhoImagemCoracao = "./../../assets/hearts.png";
+    const caminhoImagemCoracao = "./../../assets/elementos/hearts.png";
 
     // Remova todos os corações existentes
     heartsContainer.innerHTML = "";
