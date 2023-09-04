@@ -1,3 +1,4 @@
+/* Estilos globais do corpo da página */
 body {
     margin: 0;
     padding: 0;
@@ -13,21 +14,25 @@ body {
     color: rgb(209, 209, 209);
 }
 
+/* Garante que o corpo e o HTML ocupem 100% da altura da janela */
 html, body {
     height: 100% !important;
 }
 
+/* Estilos do contêiner principal do jogo */
 .game-container {
     position: relative;
     width: 800px; /* Ajuste o tamanho do contêiner conforme necessário */
     margin: 0 auto;
 }
 
+/* Estilos da imagem de fundo do jogo */
 .game-background {
     width: 100%;
     height: auto;
 }
 
+/* Estilos da descrição do jogo */
 .game-description {
     position: absolute;
     top: 60px;
@@ -38,6 +43,7 @@ html, body {
     border-radius: 5px;
 }
 
+/* Estilos dos controles do jogo */
 .game-controls {
     position: absolute;
     bottom: 10px;
@@ -45,19 +51,22 @@ html, body {
     display: flex;
 }
 
+/* Estilos dos botões de controle */
 button {
     font-size: 18px;
     padding: 5px 10px;
     margin: 5px;
 }
 
+/* Estilos das imagens */
 img {
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.046);
     max-width: 1000px;
 }
 
-.heart{
+/* Estilos dos corações */
+.heart {
     display: inline-block;
     width: 25px; /* Tamanho do coração */
     height: 25px;

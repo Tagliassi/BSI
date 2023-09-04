@@ -1,27 +1,31 @@
 import { Saida } from '../classes/saida.js';
 import { updateGameInterface } from './../alterGameInterface.js';
 
+// Classe Personagem
 export class Personagem {
+  // O construtor recebe o nome do personagem e o mapa do jogo.
   constructor(nome, mapa) {
-    this.nome = nome;
-    this.vida = 3;
-    this.dano = 10;
-    this.inventario = [];
-    this.mapa = mapa;
-    this.mapa.map[4][5].adicionarPersonagem(); // Define a localização inicial onde o jogador inicia
+    this.nome = nome; // Nome do personagem.
+    this.vida = 3; // Vida inicial do personagem.
+    this.dano = 10; // Dano do personagem.
+    this.inventario = []; // Array para armazenar os itens no inventário do personagem.
+    this.mapa = mapa; // Mapa do jogo.
+    this.mapa.map[4][5].adicionarPersonagem(); // Define a localização inicial onde o jogador inicia.
 
+    // Adiciona um evento de clique ao botão de batalha.
     const botaoBatalha = document.getElementById("fight");
-    botaoBatalha.addEventListener("click", () => this.batalhar())
+    botaoBatalha.addEventListener("click", () => this.batalhar());
   }
 
+  // Método para atualizar a exibição da vida do personagem na interface do usuário.
   atualizarCoracoes() {
     const heartsContainer = document.querySelector(".player-status .hearts");
     const caminhoImagemCoracao = "./../../assets/elementos/hearts.png";
 
-    // Remova todos os corações existentes
+    // Remove todos os corações existentes.
     heartsContainer.innerHTML = "";
 
-    // Crie corações com base na vida atual
+    // Cria corações com base na vida atual do personagem.
     for (let i = 0; i < this.vida; i++) {
       const heart = document.createElement("img");
       heart.src = caminhoImagemCoracao;
@@ -31,56 +35,39 @@ export class Personagem {
     }
   }
 
+  // Método para apresentar o personagem.
   apresentar() {
     return `Olá, meu nome é ${this.nome}`;
   }
 
+  // Método para fazer o personagem atacar um monstro.
   atacar(monstro) {
     monstro.apanhar();
   }
 
+  // Método para iniciar uma batalha.
   batalhar() {
     this.atacar(this.monstroAtual);
   }
-  
-  //   iniciarAcao() {
-  //     if (this.arma) {
-  //       const danoTotal = this.dano + this.arma.dano;
-  //       console.log(`${this.nome} atacou com ${this.arma.nome} causando ${danoTotal} de dano.`);
-  //     } else {
-  //       console.log(`${this.nome} atacou causando ${this.dano} de dano.`);
-  //     }
 
-  //     // Verifique se há um monstro na localização atual e inicie uma batalha
-  //     const localizacaoAtual = this.obterLocalizacaoExata();
-  //     if (localizacaoAtual.monstro) {
-  //       this.iniciarBatalhaComMonstro(localizacaoAtual.monstro);
-  //     }
-
+  // Método para iniciar uma batalha com um monstro específico.
   iniciarBatalhaComMonstro(monstro) {
     const batalha = new Batalha(this, monstro);
     batalha.batalhar();
   }
 
-  // Método para adicionar um item ao inventário do jogador, se houver no local onde ele está.
-  verificarSeTemItem() {
-    const localizacaoAtual = this.obterLocalizacaoExata();
-    const item = localizacaoAtual.item;
-  }
-
+  // Método para adicionar um item ao inventário do personagem.
   adicionarItemInventario(item) {
     this.inventario.push(item);
     if (item) {
       item.coletar(this);
-      localizacaoAtual.item = null; // Remova o item do mapa após a coleta
+      const currentCell = gameMap.map[currentLocation.x][currentLocation.y];
+      currentCell.item  = null; // Remove o item do mapa após a coleta.
       console.log(`Você coletou ${item.nome}.`);
     }
   }
 
-  adicionarItemInventario(item) {
-    this.inventario.push(item);
-  }
-
+  // Método para lidar com a morte do personagem.
   morrer(nomeMonstro) {
     const heartsContainer = document.querySelector(".player-status .hearts");
 
@@ -88,11 +75,13 @@ export class Personagem {
 
     setTimeout(() => {
       alert(`O ${nomeMonstro} o devorou.`);
-      location.reload();
+      location.reload(); // Recarrega a página após a morte do personagem.
     }, 1700);
   }
 
   //#region Movimentação
+
+  // Método para mover o personagem para uma nova localização.
   movePersonagem(x, y) {
     if (
       x >= 0 &&
@@ -100,25 +89,25 @@ export class Personagem {
       y >= 0 &&
       y < this.mapa.map[x].length
     ) {
-      // Remova o personagem da localização atual
+      // Remove o personagem da localização atual.
       const localizacaoAtual = this.obterLocalizacaoExata();
       localizacaoAtual.removerPersonagem();
 
-      // Adicione o personagem à nova localização
+      // Adiciona o personagem à nova localização.
       const novaLocalizacao = this.mapa.map[x][y];
       novaLocalizacao.adicionarPersonagem();
 
-      // Verifica se é a saida
+      // Verifica se é a saída.
       if (novaLocalizacao.obj instanceof Saida) {
         alert("Fim de jogo. Parabéns!");
         location.reload();
       }
 
-      // Atualize a posição do personagem
+      // Atualiza a posição do personagem.
       localizacaoAtual.personagem = false;
       novaLocalizacao.personagem = true;
 
-      // Algoritimo para verificar salas ao redor
+      // Algoritmo para verificar salas ao redor.
       const cima = x > 0 ? this.mapa.map[x - 1][y] : null;
       const baixo = x < this.mapa.map.length - 1 ? this.mapa.map[x + 1][y] : null;
       const esquerda = y > 0 ? this.mapa.map[x][y - 1] : null;
@@ -142,7 +131,7 @@ export class Personagem {
         document.getElementById("move-right").disabled = true;
       }
 
-      // Verifica se é a sala do monstro ou não
+      // Verifica se é a sala do monstro ou não.
       const monsterLifeContainer = document.getElementsByClassName("monster-status")[0];
       const botaoBatalha = document.getElementById("fight");
 
@@ -162,11 +151,11 @@ export class Personagem {
 
       updateGameInterface(novaLocalizacao.imagem, novaLocalizacao.descricao);
     } else {
-      // matar personagem ou lidar com o movimento inválido
+      // Matar personagem ou lidar com o movimento inválido.
     }
   }
 
-  // Função para mover o personagem para a esquerda
+  // Método para mover o personagem para baixo.
   moveBaixo() {
     const localizacao = this.encontrarIndiceDoObjeto(
       this.obterLocalizacaoExata(),
@@ -179,7 +168,7 @@ export class Personagem {
     this.movePersonagem(x, y);
   }
 
-  // Função para mover o personagem para a esquerda
+  // Método para mover o personagem para cima.
   moveCima() {
     const localizacao = this.encontrarIndiceDoObjeto(
       this.obterLocalizacaoExata(),
@@ -192,7 +181,7 @@ export class Personagem {
     this.movePersonagem(x, y);
   }
 
-  // Função para mover o personagem para a esquerda
+  // Método para mover o personagem para a esquerda.
   moveEsquerda() {
     const localizacao = this.encontrarIndiceDoObjeto(
       this.obterLocalizacaoExata(),
@@ -200,12 +189,12 @@ export class Personagem {
     );
 
     let x = localizacao.linha;
-    let y = localizacao.coluna - 1; // Mova para a esquerda
+    let y = localizacao.coluna - 1; // Mover para a esquerda
 
     this.movePersonagem(x, y);
   }
 
-  // Função para mover o personagem para a direita
+  // Método para mover o personagem para a direita.
   moveDireita() {
     const localizacao = this.encontrarIndiceDoObjeto(
       this.obterLocalizacaoExata(),
@@ -213,12 +202,12 @@ export class Personagem {
     );
 
     let x = localizacao.linha;
-    let y = localizacao.coluna + 1; // Mova para a direita
+    let y = localizacao.coluna + 1; // Mover para a direita
 
     this.movePersonagem(x, y);
   }
 
-  // Obtém a localização exata do personagem
+  // Obtém a localização exata do personagem.
   obterLocalizacaoExata() {
     const matriz = this.mapa.map;
     for (let i = 0; i < matriz.length; i++) {
@@ -230,7 +219,7 @@ export class Personagem {
     }
   }
 
-  // Encontra index do objeto
+  // Encontra o índice do objeto.
   encontrarIndiceDoObjeto(objetoProcurado, matriz) {
     for (let i = 0; i < matriz.length; i++) {
       for (let j = 0; j < matriz[i].length; j++) {
@@ -244,3 +233,19 @@ export class Personagem {
 
   //#endregion
 }
+
+//   iniciarAcao() {
+//     if (this.arma) {
+//       const danoTotal = this.dano + this.arma.dano;
+//       console.log(`${this.nome} atacou com ${this.arma.nome} causando ${danoTotal} de dano.`);
+//     } else {
+//       console.log(`${this.nome} atacou causando ${this.dano} de dano.`);
+//     }
+
+//     // Verifique se há um monstro na localização atual e inicie uma batalha
+//     const localizacaoAtual = this.obterLocalizacaoExata();
+//     if (localizacaoAtual.monstro) {
+//       this.iniciarBatalhaComMonstro(localizacaoAtual.monstro);
+//     }
+  
+
