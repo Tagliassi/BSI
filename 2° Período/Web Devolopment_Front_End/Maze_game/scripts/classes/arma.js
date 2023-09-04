@@ -1,3 +1,4 @@
+import { Item } from './item.js';
 // Classe Arma
 export class Arma extends Item {
   constructor(nome, dano) {

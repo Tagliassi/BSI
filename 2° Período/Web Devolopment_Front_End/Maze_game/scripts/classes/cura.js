@@ -1,3 +1,4 @@
+import { Item } from './item.js';
 // Classe Cura
 export class Cura extends Item {
   constructor(nome, cura) {
