@@ -1,3 +1,4 @@
+import { Saida } from '../classes/saida.js';
 import {updateGameInterface} from './../alterGameInterface.js';
 
 export class Personagem {
@@ -8,12 +9,14 @@ export class Personagem {
     this.inventario = [];
     this.arma = null;
     this.mapa = mapa;
-    this.mapa.map[4][5].adicionarPersonagem(); // Define a localização inicial
+    this.mapa.map[4][5].adicionarPersonagem(); // Define a localização inicial onde o jogador inicia
+
+    const botaoBatalha = document.getElementById("fight");
+    botaoBatalha.addEventListener("click", () => this.batalhar())
   }
 
-  // Método para atualizar os corações com base na vida atual do jogador
   atualizarCoracoes() {
-    const heartsContainer = document.querySelector(".hearts");
+    const heartsContainer = document.querySelector(".player-status .hearts");
     const caminhoImagemCoracao = "./../../assets/elementos/hearts.png";
 
     // Remova todos os corações existentes
@@ -32,21 +35,27 @@ export class Personagem {
   apresentar() {
     return `Olá, meu nome é ${this.nome}`;
   }
-
-  iniciarAcao() {
-    if (this.arma) {
-      const danoTotal = this.dano + this.arma.dano;
-      console.log(`${this.nome} atacou com ${this.arma.nome} causando ${danoTotal} de dano.`);
-    } else {
-      console.log(`${this.nome} atacou causando ${this.dano} de dano.`);
-    }
   
-    // Verifique se há um monstro na localização atual e inicie uma batalha
-    const localizacaoAtual = this.obterLocalizacaoExata();
-    if (localizacaoAtual.monstro) {
-      this.iniciarBatalhaComMonstro(localizacaoAtual.monstro);
-    }
+  atacar(monstro) {
+    monstro.apanhar();
   }
+
+  batalhar(){
+    this.atacar(this.monstroAtual); 
+  }
+//   iniciarAcao() {
+//     if (this.arma) {
+//       const danoTotal = this.dano + this.arma.dano;
+//       console.log(`${this.nome} atacou com ${this.arma.nome} causando ${danoTotal} de dano.`);
+//     } else {
+//       console.log(`${this.nome} atacou causando ${this.dano} de dano.`);
+//     }
+  
+//     // Verifique se há um monstro na localização atual e inicie uma batalha
+//     const localizacaoAtual = this.obterLocalizacaoExata();
+//     if (localizacaoAtual.monstro) {
+//       this.iniciarBatalhaComMonstro(localizacaoAtual.monstro);
+//     }
   
   iniciarBatalhaComMonstro(monstro) {
     const batalha = new Batalha(this, monstro);
@@ -58,12 +67,14 @@ export class Personagem {
   const localizacaoAtual = this.obterLocalizacaoExata();
   const item = localizacaoAtual.item;
 
-  if (item) {
-    item.coletar(this);
-    localizacaoAtual.item = null; // Remova o item do mapa após a coleta
-    console.log(`Você coletou ${item.nome}.`);
+  adicionarItemInventario(item) {
+    this.inventario.push(item);
+    if (item) {
+      item.coletar(this);
+      localizacaoAtual.item = null; // Remova o item do mapa após a coleta
+      console.log(`Você coletou ${item.nome}.`);
+    }
   }
-}
 
 adicionarItemInventario(item) {
   this.inventario.push(item);
@@ -76,6 +87,18 @@ adicionarArma(arma) {
   this.arma = arma;
 }
 
+  morrer(nomeMonstro){
+    const heartsContainer = document.querySelector(".player-status .hearts");
+    
+    heartsContainer.remove()
+
+    setTimeout(() => {
+      alert(`O ${nomeMonstro} o devorou.`);
+      location.reload();
+    }, 1700);
+  }
+
+  //#region Movimentação
   movePersonagem(x, y) {
     if (
       x >= 0 &&
@@ -91,10 +114,57 @@ adicionarArma(arma) {
       const novaLocalizacao = this.mapa.map[x][y];
       novaLocalizacao.adicionarPersonagem();
 
+      // Verifica se é a saida
+      if(novaLocalizacao.obj instanceof Saida){
+        alert("Fim de jogo. Parabéns!");
+        location.reload();
+      }
+
       // Atualize a posição do personagem
       localizacaoAtual.personagem = false;
       novaLocalizacao.personagem = true;
-      console.log(this.obterLocalizacaoExata());
+
+      // Algoritimo para verificar salas ao redor
+      const cima = x > 0 ? this.mapa.map[x - 1][y] : null;
+      const baixo = x < this.mapa.map.length - 1 ? this.mapa.map[x + 1][y] : null;
+      const esquerda = y > 0 ? this.mapa.map[x][y - 1] : null;
+      const direita = y < this.mapa.map[x].length - 1 ? this.mapa.map[x][y + 1] : null;
+
+      document.getElementById("move-up").disabled = false;
+      document.getElementById("move-down").disabled = false;
+      document.getElementById("move-left").disabled = false;
+      document.getElementById("move-right").disabled = false;
+
+      if(!cima.ativado){
+        document.getElementById("move-up").disabled = true;
+      }
+      if(!baixo.ativado){
+        document.getElementById("move-down").disabled = true;
+      }
+      if(!esquerda.ativado){
+        document.getElementById("move-left").disabled = true;
+      }
+      if(!direita.ativado){
+        document.getElementById("move-right").disabled = true;
+      }
+
+      // Verifica se é a sala do monstro ou não
+      const monsterLifeContainer = document.getElementsByClassName("monster-status")[0];
+      const botaoBatalha = document.getElementById("fight");
+      
+      console.log(novaLocalizacao);
+      if(novaLocalizacao.monsterExist()){
+        novaLocalizacao.obj.atualizarCoracoes();
+
+        monsterLifeContainer.style.display = "block";
+        botaoBatalha.style.display = "block";
+
+        novaLocalizacao.obj.lutar(this);
+        this.monstroAtual = novaLocalizacao.obj;
+      } else {
+        monsterLifeContainer.style.display = "none";
+        botaoBatalha.style.display = "none";
+      }
 
       updateGameInterface(novaLocalizacao.imagem, novaLocalizacao.descricao);
     } else {
@@ -114,7 +184,7 @@ adicionarArma(arma) {
 
     this.movePersonagem(x, y);
   }
-
+ 
   // Função para mover o personagem para a esquerda
   moveCima() {
     const localizacao = this.encontrarIndiceDoObjeto(
@@ -175,6 +245,8 @@ adicionarArma(arma) {
         }
       }
     }
-    return null; // Se o objeto não for encontrado, retorna null
+    return null;
   }
+
+  //#endregion
 }
