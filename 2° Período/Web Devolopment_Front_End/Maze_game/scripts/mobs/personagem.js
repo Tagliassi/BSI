@@ -6,6 +6,7 @@ export class Personagem {
     this.vida = 3;
     this.dano = 10;
     this.inventario = [];
+    this.arma = null;
     this.mapa = mapa;
     this.mapa.map[4][5].adicionarPersonagem(); // Define a localização inicial
   }
@@ -32,14 +33,48 @@ export class Personagem {
     return `Olá, meu nome é ${this.nome}`;
   }
 
-  atacar() {
-    iniciarBatalha();
+  iniciarAcao() {
+    if (this.arma) {
+      const danoTotal = this.dano + this.arma.dano;
+      console.log(`${this.nome} atacou com ${this.arma.nome} causando ${danoTotal} de dano.`);
+    } else {
+      console.log(`${this.nome} atacou causando ${this.dano} de dano.`);
+    }
+  
+    // Verifique se há um monstro na localização atual e inicie uma batalha
+    const localizacaoAtual = this.obterLocalizacaoExata();
+    if (localizacaoAtual.monstro) {
+      this.iniciarBatalhaComMonstro(localizacaoAtual.monstro);
+    }
+  }
+  
+  iniciarBatalhaComMonstro(monstro) {
+    const batalha = new Batalha(this, monstro);
+    batalha.batalhar();
   }
 
-  // Método para adicionar um item ao inventário do jogador
-  adicionarItemInventario(item) {
-    this.inventario.push(item);
+  // Método para adicionar um item ao inventário do jogador, se houver no local onde ele está.
+ verificarSeTemItem() {
+  const localizacaoAtual = this.obterLocalizacaoExata();
+  const item = localizacaoAtual.item;
+
+  if (item) {
+    item.coletar(this);
+    localizacaoAtual.item = null; // Remova o item do mapa após a coleta
+    console.log(`Você coletou ${item.nome}.`);
   }
+}
+
+adicionarItemInventario(item) {
+  this.inventario.push(item);
+  if (item instanceof Arma) {
+    this.adicionarArma(item); // Se o item for uma arma, adicioná-lo à mão do personagem
+  }
+}
+
+adicionarArma(arma) {
+  this.arma = arma;
+}
 
   movePersonagem(x, y) {
     if (

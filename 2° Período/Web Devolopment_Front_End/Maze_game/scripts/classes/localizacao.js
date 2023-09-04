@@ -43,9 +43,9 @@ export class Localizacao {
     this.personagem = false;
   }  
 
-  mensagemAdicional(){
-    console.log(this.obj)
-    switch (this.obj) {
+  mensagemAdicional() {
+    console.log(this.obj);
+    switch (true) {
       case this.obj instanceof Chave:
         this.descricao += "Você encontrou um objeto: Chave Verde.";
         break;
@@ -71,6 +71,5 @@ export class Localizacao {
         this.descricao += "Você está em uma área desconhecida.\n\n- Estou cansado e com fome.";
     }
     this.descricao += "\n\n";
-    
-  }
+}
 }

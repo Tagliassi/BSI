@@ -1,18 +1,30 @@
 // Classe Portal
 export class Portal {
   constructor(nome) {
-      this.nome = nome;
+    this.nome = nome;
   }
 
-  teleportarPersonagemAleatoriamente() {
-      // Implementar a lógica de teleportação aqui
+  teleportarPersonagemAleatoriamente(personagem, mapa) {
+    // Implementar a lógica de teleportação aqui
+    const larguraDoMapa = mapa.map[0].length;
+    const alturaDoMapa = mapa.map.length;
+
+    // Gerar coordenadas aleatórias
+    const x = Math.floor(Math.random() * alturaDoMapa);
+    const y = Math.floor(Math.random() * larguraDoMapa);
+
+    // Mover o personagem para as novas coordenadas
+    personagem.movePersonagem(x, y);
+
+    console.log(`O personagem foi teletransportado aleatoriamente para (${x}, ${y}).`);
   }
 
-  verificarSeTemPortal(){
-    if (this.player.posicaoAtual[0] === 6 && this.player.posicaoAtual[1] === 3) {
+  verificarSeTemPortal(personagem) {
+    const localizacaoAtual = personagem.obterLocalizacaoExata();
+
+    if (localizacaoAtual.x === 6 && localizacaoAtual.y === 3) {
       console.log("O personagem encontrou um portal e foi teletransportado aleatoriamente pelo mapa.");
-      teleportarPersonagemAleatoriamente()
+      this.teleportarPersonagemAleatoriamente(personagem, personagem.mapa);
     }
   }
-
 }
