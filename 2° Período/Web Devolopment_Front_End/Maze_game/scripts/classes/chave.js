@@ -1,3 +1,5 @@
+import { Item } from './item.js';
+
 // Classe Chave
 export class Chave extends Item {
     constructor(tipoDeChave) {
