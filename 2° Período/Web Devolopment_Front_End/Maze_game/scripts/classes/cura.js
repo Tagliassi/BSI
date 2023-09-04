@@ -1,23 +1,20 @@
 // Classe Cura
-export class Cura {
+export class Cura extends Item {
   constructor(nome, cura) {
-      this.nome = nome;
-      this.cura = cura;
+    super(nome);
+    this.cura = cura;
   }
 
-  adicionarCuraInventario(){
-    adicionarItemInventario(this.nome)
+  verificarSeTemCura() {
+    const localizacaoAtual = this.obterLocalizacaoExata();
+
+    if (localizacaoAtual.x === 2 && localizacaoAtual.y === 6) {
+      console.log(`O personagem encontrou uma super cura (${this.nome}), foi adicionada ao seu inventário.`);
+      this.coletar(this); // Chame o método de coleta da classe base
+    }
   }
 
   aplicarCura(personagem) {
-      personagem.vida += this.cura;
+    personagem.vida += this.cura;
   }
-
-  verificarSeTemCura(){
-    if (this.player.posicaoAtual[0] === 2 && this.player.posicaoAtual[1] === 6) {
-      console.log("O personagem encontrou uma super cura, foi adicionada ao seu inventario.");
-      adicionarCuraInventario()
-    }
-  }
-  
 }

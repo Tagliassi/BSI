@@ -45,9 +45,12 @@ export class Localizacao {
   removerPersonagem() {
     this.personagem = false;
   }
-
+  
+  monsterExist() {
+    return (this.obj instanceof Monstro);
+  }
+  
   mensagemAdicional() {
-
     if(this.obj instanceof Monstro){
       this.descricao += "Você está enfrentando um monstro.";
       this.descricao += `\n\n${this.obj.apresentar()}`
@@ -55,34 +58,37 @@ export class Localizacao {
       this.descricao += `\n\n${this.obj.gritar()}`
       this.descricao += "\n\nVocê saca sua arma e fica em posição, agora resta esperar o momento certo para realizar seu ataque.";
     }
+    
     if(this.obj instanceof Chave){
       this.descricao = this.descricao + "Você encontrou um objeto: Chave Verde.";
     }
+    
     if(this.obj instanceof Armadilha){
       this.descricao += "Cuidado! Você caiu em uma armadilha.";
     }
+    
     if(this.obj instanceof Cura){
       this.descricao += "encontrou uma poção de cura.";
       this.descricao += "\n\nVocê olha para o chão e ecnontra um poção coberta de musgo, no desespero você a toma\n\n- Sinto-me mais aliviado";
     }
+    
     if(this.obj instanceof Arma){
       this.descricao += "Você encontrou uma nova arma, e diz.\n\n- Agora posso finalmente batalhar.";
     }
+    
     if(this.obj instanceof Porta){
       this.descricao += "Você encontrou uma porta.";
       this.descricao += "\n\nParece está trancada, você não consegue ver o que tem do outro lado, mas consegue ouvir alguns musmurros.\n\n- muhr.. murr...";
     }
+    
     if(this.obj instanceof Portal){
       this.descricao += "Você entrou em um portal misterioso. Parece não funcionar mas te deixa intrigado.";
     }
+    
     if(this.obj instanceof Saida){
       this.descricao += "- Enfim a jornada terminou.";
     }
 
     this.descricao += "\n\n";
-  }
-
-  monsterExist() {
-    return (this.obj instanceof Monstro);
   }
 }

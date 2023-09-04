@@ -1,23 +1,20 @@
 // Classe Arma
-export class Arma {
+export class Arma extends Item {
   constructor(nome, dano) {
-      this.nome = nome;
-      this.dano = dano;
+    super(nome);
+    this.dano = dano;
   }
 
-  aumentarDano(personagem) {
-      personagem.dano += this.dano;
-  }
+  verificarSeTemArmaEColetar(personagem) {
+    const localizacaoAtual = this.obterLocalizacaoExata();
 
-  adicionarArmaInventario(){
-    adicionarItemInventario(this.nome)
-  }
-
-  verificarSeTemArma(){
-    if (this.player.posicaoAtual[0] === 3 && this.player.posicaoAtual[1] === 0) {
-      console.log("O personagem encontrou uma arma, foi adicionada ao seu inventario.");
-      adicionarArmaInventario()
+    if (localizacaoAtual.x === 3 && localizacaoAtual.y === 0) {
+      if (!personagem.arma) {
+        console.log(`O personagem encontrou uma arma (${this.nome}) e a adicionou ao seu inventário.`);
+        this.coletar(personagem); // Chame o método de coleta da classe base
+      } else {
+        console.log(`O personagem já possui uma arma, não foi possível coletar a arma (${this.nome}).`);
+      }
     }
   }
-
 }
