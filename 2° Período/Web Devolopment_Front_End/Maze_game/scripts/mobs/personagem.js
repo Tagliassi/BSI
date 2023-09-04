@@ -1,3 +1,4 @@
+import { Saida } from '../classes/saida.js';
 import {updateGameInterface} from './../alterGameInterface.js';
 
 export class Personagem {
@@ -7,12 +8,14 @@ export class Personagem {
     this.dano = 10;
     this.inventario = [];
     this.mapa = mapa;
-    this.mapa.map[4][5].adicionarPersonagem(); // Define a localização inicial
+    this.mapa.map[4][5].adicionarPersonagem(); // Define a localização inicial onde o jogador inicia
+
+    const botaoBatalha = document.getElementById("fight");
+    botaoBatalha.addEventListener("click", () => this.batalhar())
   }
 
-  // Método para atualizar os corações com base na vida atual do jogador
   atualizarCoracoes() {
-    const heartsContainer = document.querySelector(".hearts");
+    const heartsContainer = document.querySelector(".player-status .hearts");
     const caminhoImagemCoracao = "./../../assets/elementos/hearts.png";
 
     // Remova todos os corações existentes
@@ -32,15 +35,30 @@ export class Personagem {
     return `Olá, meu nome é ${this.nome}`;
   }
 
-  atacar() {
-    iniciarBatalha();
+  atacar(monstro) {
+    monstro.apanhar();
   }
 
-  // Método para adicionar um item ao inventário do jogador
+  batalhar(){
+    this.atacar(this.monstroAtual); 
+  }
+
   adicionarItemInventario(item) {
     this.inventario.push(item);
   }
 
+  morrer(nomeMonstro){
+    const heartsContainer = document.querySelector(".player-status .hearts");
+    
+    heartsContainer.remove()
+
+    setTimeout(() => {
+      alert(`O ${nomeMonstro} o devorou.`);
+      location.reload();
+    }, 1700);
+  }
+
+  //#region Movimentação
   movePersonagem(x, y) {
     if (
       x >= 0 &&
@@ -56,10 +74,57 @@ export class Personagem {
       const novaLocalizacao = this.mapa.map[x][y];
       novaLocalizacao.adicionarPersonagem();
 
+      // Verifica se é a saida
+      if(novaLocalizacao.obj instanceof Saida){
+        alert("Fim de jogo. Parabéns!");
+        location.reload();
+      }
+
       // Atualize a posição do personagem
       localizacaoAtual.personagem = false;
       novaLocalizacao.personagem = true;
-      console.log(this.obterLocalizacaoExata());
+
+      // Algoritimo para verificar salas ao redor
+      const cima = x > 0 ? this.mapa.map[x - 1][y] : null;
+      const baixo = x < this.mapa.map.length - 1 ? this.mapa.map[x + 1][y] : null;
+      const esquerda = y > 0 ? this.mapa.map[x][y - 1] : null;
+      const direita = y < this.mapa.map[x].length - 1 ? this.mapa.map[x][y + 1] : null;
+
+      document.getElementById("move-up").disabled = false;
+      document.getElementById("move-down").disabled = false;
+      document.getElementById("move-left").disabled = false;
+      document.getElementById("move-right").disabled = false;
+
+      if(!cima.ativado){
+        document.getElementById("move-up").disabled = true;
+      }
+      if(!baixo.ativado){
+        document.getElementById("move-down").disabled = true;
+      }
+      if(!esquerda.ativado){
+        document.getElementById("move-left").disabled = true;
+      }
+      if(!direita.ativado){
+        document.getElementById("move-right").disabled = true;
+      }
+
+      // Verifica se é a sala do monstro ou não
+      const monsterLifeContainer = document.getElementsByClassName("monster-status")[0];
+      const botaoBatalha = document.getElementById("fight");
+      
+      console.log(novaLocalizacao);
+      if(novaLocalizacao.monsterExist()){
+        novaLocalizacao.obj.atualizarCoracoes();
+
+        monsterLifeContainer.style.display = "block";
+        botaoBatalha.style.display = "block";
+
+        novaLocalizacao.obj.lutar(this);
+        this.monstroAtual = novaLocalizacao.obj;
+      } else {
+        monsterLifeContainer.style.display = "none";
+        botaoBatalha.style.display = "none";
+      }
 
       updateGameInterface(novaLocalizacao.imagem, novaLocalizacao.descricao);
     } else {
@@ -79,7 +144,7 @@ export class Personagem {
 
     this.movePersonagem(x, y);
   }
-
+ 
   // Função para mover o personagem para a esquerda
   moveCima() {
     const localizacao = this.encontrarIndiceDoObjeto(
@@ -140,6 +205,8 @@ export class Personagem {
         }
       }
     }
-    return null; // Se o objeto não for encontrado, retorna null
+    return null;
   }
+
+  //#endregion
 }

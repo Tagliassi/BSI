@@ -12,10 +12,18 @@
         <div class="game-description">
             <p class="game-text"></p>
         </div>
-        <div class="player-status">
-            <p>Vida Atual do Player:</p>
-            <div class="hearts">
-                <img src="./../../assets/elementos/hearts.png" alt="Coração" class="heart">
+        <div style="display: flex; gap: 100px;">
+            <div class="player-status">
+                <p>Vida Atual do Player:</p>
+                <div class="hearts">
+                    <img src="./../../assets/elementos/hearts.png" alt="Coração" class="heart">
+                </div>
+            </div>
+            <div class="monster-status" style="display: none;">
+                <p>Vida Atual do Monstro:</p>
+                <div class="hearts">
+                    <img src="./../../assets/elementos/hearts.png" alt="Coração" class="heart">
+                </div>
             </div>
         </div>
         <div class="game-controls">
@@ -23,6 +31,7 @@
             <button id="move-up">↑</button>
             <button id="move-down">↓</button>
             <button id="move-right">→</button>
+            <button id="fight" style="display: none;">ATACAR</button>
         </div>
     </div>
     <script type="module" src="./../../scripts/script.js"></script>
