@@ -4,6 +4,7 @@ import { updateGameInterface } from './../alterGameInterface.js';
 // Classe Personagem
 export class Personagem {
   // O construtor recebe o nome do personagem e o mapa do jogo.
+
   constructor(nome, mapa) {
     this.nome = nome; // Nome do personagem.
     this.vida = 3; // Vida inicial do personagem.
