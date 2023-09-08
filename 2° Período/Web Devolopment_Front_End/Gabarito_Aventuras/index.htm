@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Minha Aventura</title>
+        <link rel="stylesheet" href="estiles.css">
+        <script src="variables.js"></script>
+    </head>
+    <body>
+        <p class="title">A Grande Aventura</p>
+        <table border="0" width="100%">
+            <tr style="height: 60px;">
+                <td style="width: 150px;">&nbsp</td>
+                <td style="width: 600px; text-align: center;">
+                    <img src="images/up.png" width="60" onclick="cmdUpOnClick()"/>
+                </td>
+                <td style="width: 60px;">&nbsp</td>
+                <td>&nbsp</td>
+            </tr>
+            <tr style="height: 400px;">
+                <td style="text-align: right;">
+                    <img src="images/left.png" width="60" onclick="cmdLeftClick()"/>
+                </td>
+                <td>
+                    <img id="imagearea" src="images/map.png" class="imagearea"/>
+                </td>
+                <td>
+                    <img src="images/right.png" width="60" onclick="cmdRightClick()"/>
+                </td>
+                <td>
+                    <div class="textarea" id="textarea">
+                        <p style="font-size: 25px;">
+                            <b>Bem-vindo ao Primeiro Reino</b>
+                        </p>
+                        <p style="text-align: justify;">
+                            Aqui vai rolar a história da aventura... era uma vez, um gato xadrez, que fez... <br><br>
+                            Se quiser entrar no castelo, vá para o norte!!!<br><br>
+                            Se for um convarde miserável, vá para outra direção...
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 60px; text-align: center;">
+                <td>&nbsp</td>
+                <td>
+                    <img src="images/down.png" width="60" onclick="cmdDownClick()"/>
+                </td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+            </tr>
+        </table>
+    </body>
+        <script src="handle_events.js"></script>
+    <script>
+
+        function start() {
+            let name = prompt("Qual o seu nome, aventureiro?");
+            hero.name = name;
+            alert(`${hero.name}, seja bem-vindo à sua aventura!!!`);
+        }
+
+        start();
+    </script>
+</html>
