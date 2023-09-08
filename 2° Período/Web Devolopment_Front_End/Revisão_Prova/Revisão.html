@@ -1,0 +1,537 @@
+<!-- Eventos -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de onClick</title>
+</head>
+<body>
+
+<button id="meuBotao" onclick="alert('Você clicou no botão!')">Clique em mim</button>
+
+</body>
+</html>
+
+<!-- Eventos -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de onChange</title>
+</head>
+<body>
+
+<input type="text" id="meuCampo" onchange="mostrarMensagem()">
+
+<script>
+    function mostrarMensagem() {
+        var valor = document.getElementById("meuCampo").value;
+        alert("Você digitou: " + valor);
+    }
+</script>
+
+</body>
+</html>
+
+<!-- Eventos de Mouse-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de onMouseOver</title>
+    <style>
+        #minhaDiv {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="minhaDiv" onmouseover="mudarCor()"></div>
+
+<script>
+    function mudarCor() {
+        document.getElementById("minhaDiv").style.backgroundColor = "lightgreen";
+    }
+</script>
+
+</body>
+</html>
+
+<!-- Eventos de teclado -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de onKeyPress</title>
+</head>
+<body>
+
+<input type="text" id="meuCampo" onkeypress="mostrarTecla(event)">
+
+<script>
+    function mostrarTecla(event) {
+        var tecla = event.key;
+        alert("Você pressionou a tecla: " + tecla);
+    }
+</script>
+
+</body>
+</html>
+
+<!-- Eventos de teclado -->
+
+<script>
+    document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        alert("Você pressionou a tecla Enter.");
+    }
+});
+</script>
+
+<!-- Eventos de teclado -->
+
+<script>
+    var meuCampo = document.getElementById("meuCampo");
+
+    meuCampo.addEventListener("input", function(event) {
+        console.log("Texto digitado: " + event.target.value);
+    });
+
+</script>
+
+<!-- Eventos de teclado -->
+
+<script>
+    var meuCampo = document.getElementById("meuCampo");
+
+    meuCampo.addEventListener("focus", function() {
+        console.log("O campo obteve o foco.");
+    });
+
+    meuCampo.addEventListener("blur", function() {
+        console.log("O campo perdeu o foco.");
+    });
+
+</script>
+
+<!-- Formulários -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de Formulário</title>
+</head>
+<body>
+
+<form action="processar_formulario.js" method="POST">
+    <!-- Campo de entrada de texto -->
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+    
+    <!-- Caixa de seleção -->
+    <label for="sexo">Sexo:</label>
+    <select id="sexo" name="sexo">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+    </select>
+    
+    <!-- Botão de envio -->
+    <input type="submit" value="Enviar">
+</form>
+
+</body>
+</html>
+
+<!-- Formulários Validação -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de Validação de Formulário</title>
+</head>
+<body>
+
+<form>
+    <!-- Campo de entrada de texto obrigatório com comprimento mínimo -->
+    <label for="username">Nome de Usuário:</label>
+    <input type="text" id="username" name="username" required minlength="6">
+
+    <!-- Campo de entrada de e-mail -->
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <!-- Campo numérico com valor mínimo e máximo -->
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade" name="idade" min="18" max="99">
+
+    <!-- Botão de envio -->
+    <input type="submit" value="Enviar">
+</form>
+
+</body>
+</html>
+
+<!-- Formulários Validação com Regex -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de Validação com Regex</title>
+</head>
+<body>
+
+<form>
+    <label for="telefone">Número de Telefone (EUA):</label>
+    <input type="text" id="telefone" name="telefone" required pattern="^\(\d{3}\) \d{3}-\d{4}$" title="Por favor, insira um número de telefone válido no formato (xxx) xxx-xxxx">
+    <button type="submit">Enviar</button>
+</form>
+
+</body>
+</html>
+
+<!-- Formulários Validação onSubmit-->
+
+<form id="meuFormulario" onsubmit="return validarFormulario()">
+    <input type="text" name="nome" required>
+    <input type="submit" value="Enviar">
+</form>
+
+<script>
+    function validarFormulario() {
+        var nome = document.forms["meuFormulario"]["nome"].value;
+        if (nome === "") {
+            alert("Por favor, preencha o campo Nome.");
+            return false; // Impede o envio do formulário se o campo estiver vazio
+        }
+        // Outras validações podem ser adicionadas aqui
+        return true; // Permite o envio do formulário se todos os campos estiverem válidos
+    }
+</script>
+
+<!-- Formulários onReset -->
+
+<form id="meuFormulario" onreset="exibirMensagem()">
+    <input type="text" name="nome" required>
+    <input type="reset" value="Redefinir">
+ </form>
+ 
+ <script>
+    function exibirMensagem() {
+        alert("O formulário foi redefinido.");
+    }
+ </script>
+
+<!-- Tabelas -->
+<!-- Aplica uma cor de fundo cinza claro em linhas alternadas da tabela, criando um efeito zebrado. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabela HTML com CSS</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+    </tr>
+    <tr>
+        <td>João</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>Maria</td>
+        <td>30</td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+<!-- Manipulando elementos -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alterar Texto de uma Div</title>
+</head>
+<body>
+
+<div id="minhaDiv">Este é o texto original da div.</div>
+<button onclick="alterarTexto()">Alterar Texto</button>
+
+<script>
+    function alterarTexto() {
+        // Seleciona a div pelo ID
+        var div = document.getElementById("minhaDiv");
+
+        // Altera o texto usando innerHTML
+        div.innerHTML = "Novo texto da div!";
+    }
+</script>
+
+</body>
+</html>
+
+<!-- Caixa de Seleção -->
+
+<label for="frutas">Escolha uma fruta:</label>
+<select id="frutas" name="frutas">
+    <option value="maca">Maçã</option>
+    <option value="banana">Banana</option>
+    <option value="laranja">Laranja</option>
+    <option value="uva">Uva</option>
+</select>
+
+<!-- Caixa de Seleção -->
+<!-- Você pode especificar uma opção padrão definindo o atributo selected em uma das opções. -->
+
+<select id="paises" name="paises">
+    <option value="brasil">Brasil</option>
+    <option value="eua" selected>Estados Unidos</option>
+    <option value="canada">Canadá</option>
+</select>
+
+<!-- Caixa de Seleção Múltipla -->
+<!-- Isso permitirá que os usuários selecionem várias cores segurando a tecla "Ctrl"-->
+
+<select id="cores" name="cores" multiple>
+    <option value="vermelho">Vermelho</option>
+    <option value="verde">Verde</option>
+    <option value="azul">Azul</option>
+</select>
+
+<!-- Caixa de Seleção com evento OnChange -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Identificar Opção Selecionada</title>
+</head>
+<body>
+
+<label for="frutas">Escolha uma fruta:</label>
+<select id="frutas" name="frutas" onchange="mostrarOpcaoSelecionada()">
+    <option value="maca">Maçã</option>
+    <option value="banana">Banana</option>
+    <option value="laranja">Laranja</option>
+    <option value="uva">Uva</option>
+</select>
+
+<p>A opção selecionada é: <span id="opcaoSelecionada"></span></p>
+
+<script>
+    function mostrarOpcaoSelecionada() {
+        var selectElement = document.getElementById("frutas");
+        var selectedOption = selectElement.options[selectElement.selectedIndex].text;
+        var resultado = document.getElementById("opcaoSelecionada");
+        resultado.textContent = selectedOption;
+    }
+</script>
+
+</body>
+</html>
+
+<!-- Radio Buttons -->
+<!-- Apenas uma opção pode ser selecionada pois os names são iguais-->
+
+<form>
+    <label for="opcao1">Opção 1:</label>
+    <input type="radio" id="opcao1" name="grupoOpcoes" value="opcao1">
+
+    <label for="opcao2">Opção 2:</label>
+    <input type="radio" id="opcao2" name="grupoOpcoes" value="opcao2">
+
+    <label for="opcao3">Opção 3:</label>
+    <input type="radio" id="opcao3" name="grupoOpcoes" value="opcao3">
+</form>
+
+<script>
+    var opcoes = document.getElementsByName("grupoOpcoes");
+
+    for (var i = 0; i < opcoes.length; i++) {
+        if (opcoes[i].checked) {
+            console.log("Opção selecionada: " + opcoes[i].value);
+        }
+    }
+</script>
+
+<!-- Check Boxes -->
+<!-- Varias opções podem ser selecionadas pois os names são diferentes-->
+
+<form>
+    <label for="opcao1">Opção 1:</label>
+    <input type="checkbox" id="opcao1" name="opcao1" value="opcao1">
+
+    <label for="opcao2">Opção 2:</label>
+    <input type="checkbox" id="opcao2" name="opcao2" value="opcao2">
+
+    <label for="opcao3">Opção 3:</label>
+    <input type="checkbox" id="opcao3" name="opcao3" value="opcao3">
+</form>
+
+<script>
+    var caixasDeSelecao = document.querySelectorAll('input[type="checkbox"]');
+
+    caixasDeSelecao.forEach(function(caixa) {
+        caixa.addEventListener("change", function() {
+            if (caixa.checked) {
+                console.log("Caixa de seleção marcada: " + caixa.value);
+            }
+        });
+    });
+</script>
+
+<!-- Manipulando elementos -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alterar Texto do Botão</title>
+</head>
+<body>
+
+<button id="meuBotao">Clique em Mim</button>
+<button id="outroBotao">Outro Botão</button>
+
+<script>
+    // Selecionar o botão pelo ID
+    var meuBotao = document.getElementById("meuBotao");
+    var outroBotao = document.getElementById("outroBotao");
+
+    // Alterar o texto do primeiro botão
+    meuBotao.addEventListener("click", function() {
+        meuBotao.textContent = "Botão Clicado!"; // Retorna "Texto Oculto e Texto Visível"
+    });
+
+    // Alterar o texto do segundo botão
+    outroBotao.addEventListener("click", function() {
+        outroBotao.innerText = "Outro Botão Clicado!"; // Retorna "Texto Visível"
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Manipulando elementos (IMAGENS) -->
+
+<img id="minhaImagem" src="imagem1.jpg" alt="Minha Imagem">
+
+<button onclick="trocarImagem()">Trocar Imagem</button>
+
+<script>
+    function trocarImagem() {
+        var minhaImagem = document.getElementById("minhaImagem");
+        minhaImagem.src = "nova_imagem.jpg";
+        minhaImagem.alt = "Nova Imagem";
+    }
+</script>
+
+<!-- Manipulando elementos (OBJETOS) -->
+
+<div id="meuObjeto">Este é um objeto HTML que pode ser oculto ou exibido.</div>
+<button onclick="alternarVisibilidade()">Alternar Visibilidade</button>
+
+<script>
+    //Ainda ocupará espaço na página
+    function alternarVisibilidade() {
+        var meuObjeto = document.getElementById("meuObjeto");
+        
+        if (meuObjeto.style.visibility === "hidden") {
+            meuObjeto.style.visibility = "visible";
+        } else {
+            meuObjeto.style.visibility = "hidden";
+        }
+    }
+
+    // Não ocupa espaço na página. "block" (para torná-lo visível) e "none" (para torná-lo invisível).
+    function alternarVisibilidade() {
+        var meuObjeto = document.getElementById("meuObjeto");
+        
+        if (meuObjeto.style.display === "none") {
+            meuObjeto.style.display = "block";
+        } else {
+            meuObjeto.style.display = "none";
+        }
+    }
+
+</script>
+
+<!-- Manipulando elementos (OBJETOS) -->
+
+<button id="meuBotao" onclick="desabilitarBotao()">Clique para Desabilitar</button>
+<button id="meuBotao" onclick="habilitarBotao()">Clique para Habilitar</button>
+<input type="text" id="meuCampoTexto" value="Texto de Exemplo">
+
+<script>
+
+    function desabilitarBotao() {
+        var meuBotao = document.getElementById("meuBotao");
+        var meuCampoTexto = document.getElementById("meuCampoTexto");
+
+        // Desabilitar o botão e o campo de texto
+        meuBotao.disabled = true;
+        meuCampoTexto.disabled = true;
+    }
+
+    function habilitarBotao() {
+        var meuBotao = document.getElementById("meuBotao");
+        var meuCampoTexto = document.getElementById("meuCampoTexto");
+
+        // Habilitar o botão e o campo de texto
+        meuBotao.disabled = false;
+        meuCampoTexto.disabled = false;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
