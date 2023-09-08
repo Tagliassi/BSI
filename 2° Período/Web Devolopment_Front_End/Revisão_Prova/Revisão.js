@@ -71,3 +71,18 @@ const carro = {
 for (let chave in carro) {
     console.log(chave + ": " + carro[chave]);
 }
+
+// Conceitos de loop (for of)
+
+const frutas = ["maçã", "banana", "laranja"];
+for (let fruta of frutas) {
+    console.log(fruta);
+}
+
+// Conceitos de loop (for each)
+
+const numeros = [1, 2, 3, 4, 5];
+
+numeros.forEach(function(numero) {
+    console.log(numero);
+});
