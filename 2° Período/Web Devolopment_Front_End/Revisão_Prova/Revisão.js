@@ -71,6 +71,3 @@ const carro = {
 for (let chave in carro) {
     console.log(chave + ": " + carro[chave]);
 }
-
-
-
