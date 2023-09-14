@@ -4,9 +4,8 @@ public class ImovelNovo extends Imovel {
         super(nome, preco);
     }
 
-    public Double getAcrescimo(){
-        return preco;
-
+    public Double getAcrescimo(Double valor){
+        return valor*1.10;
     }
 
     public String toString() {
