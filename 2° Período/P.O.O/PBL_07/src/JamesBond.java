@@ -1,6 +1,10 @@
 public class JamesBond extends Heroi{
 
-    public void atirar(){}
-    public void saltar(){}
+    @Override
+    public void atirar() {
+        String mensagem = String.format("%s Está Atirando!",  toString());
+        System.out.println(mensagem);
+    }
+
     
 }

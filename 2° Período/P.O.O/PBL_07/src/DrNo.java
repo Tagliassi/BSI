@@ -1,9 +1,9 @@
 public class DrNo extends Terrorista {
-
-    public void saltar(){}
-
-    public void atirar(){}
-    
-    public void correr(){}
-    
+    @Override
+    public void saltar(float z) {
+        this.posicao_z = z;
+        
+        String mensagem = String.format("%s Está saltando!",  toString());
+        System.out.println(mensagem);
+    }
 }

@@ -6,9 +6,14 @@ public abstract class Personagem {
     protected float posicao_z;
     protected int cor;
 
-    public void correr(){}
-    public void saltar(){}
-    public void atirar(){}
-    public void morrer(){}
-    
+    public abstract void correr(float x, float y); 
+    public abstract void saltar(float z); 
+    public abstract void atirar();
+
+    public void morrer(){
+        this.vivo = false;
+
+        String mensagem = String.format("%s Está morto!",  toString());
+        System.out.println(mensagem);
+    } 
 }
