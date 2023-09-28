@@ -1,0 +1,20 @@
+1.
+	1 - 2000
+	2 - 4000
+
+2.	NDA
+	
+
+3.
+	1 - Desenhando circulo : 0.0 / 0.0 / 5 / 3.0
+  2 - Apagando circulo : 0.0 / 0.0 / 5 / 3.0
+	3 - Desenhando circulo : 7.5 / 8.0 / 5 / 3.0
+	4 - Apagando circulo : 7.5 / 8.0 / 5 / 3.0
+	5 - Desenhando circulo : 7.5 / 8.0 / 9 / 3.0
+	6 - Desenhando retangulo: 4.5 / 3.0 / 8 / 2.5 / 4.0
+	7 - Apagando retangulo: 4.5 / 3.0 / 8 / 2.5 / 4.0
+	8 - Desenhando retangulo: 2.0 / 8.5 / 8 / 2.5 / 4.0
+	9 - Apagando retangulo: 2.0 / 8.5 / 8 / 2.5 / 4.0
+	10 - Desenhando retangulo: 2.0 / 8.5 / 1 / 2.5 / 4.0
+4.
+	E
