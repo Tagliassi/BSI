@@ -1,5 +1,5 @@
 {
-  "name": "web-framework",
+  "name": "web-framework-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:webFramework": "node dist/web-framework/server/server.mjs"
+    "serve:ssr:WebFrameworkApp": "node dist/web-framework-app/server/server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -20,15 +20,15 @@
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/platform-server": "^17.2.0",
     "@angular/router": "^17.2.0",
-    "@angular/ssr": "^17.2.0",
+    "@angular/ssr": "^17.2.1",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.2.0",
-    "@angular/cli": "^17.2.0",
+    "@angular-devkit/build-angular": "^17.2.1",
+    "@angular/cli": "^17.2.1",
     "@angular/compiler-cli": "^17.2.0",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",

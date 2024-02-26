@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "webFramework": {
+    "WebFrameworkApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/web-framework",
+            "outputPath": "dist/web-framework-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "webFramework:build:production"
+              "buildTarget": "WebFrameworkApp:build:production"
             },
             "development": {
-              "buildTarget": "webFramework:build:development"
+              "buildTarget": "WebFrameworkApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "webFramework:build"
+            "buildTarget": "WebFrameworkApp:build"
           }
         },
         "test": {
@@ -96,5 +96,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8c2516e2-5ec3-403a-93da-b966d597406a"
   }
 }
