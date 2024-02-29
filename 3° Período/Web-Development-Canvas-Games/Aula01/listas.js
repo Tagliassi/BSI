@@ -43,9 +43,19 @@ const cantores = [
     {nome: "Skank", estilo: "Pop rock"}
 ];
 
+// Exercise 01
+
 let a = 10;
 let b = 20;
 
-[a] = 11;
+[a,b] = [b,a];
 
 console.log(a);
+console.log(b);
+
+// Exercise 02
+
+for (const albun of albuns){
+    const {nome, cantor, ano} = albun
+    console.log(`${nome} nome do autor, ${cantor} cantor, ${ano} ano do album`)
+}
