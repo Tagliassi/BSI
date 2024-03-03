@@ -1,15 +1,3 @@
-const menos = (a,b) => b === undefined ? -a : a-b;
-
-const maior = (...nums) => {
-    let maior = nums[0];
-
-    for (n of nums){
-        n > maior ? (maior = n) : maior;
-    }
-
-    return maior;
-};
-
 const albuns = [
     {nome: "Mais", cantor: "Marisa monte", ano: 1991, nota: 8.5},
     {nome: "A tempestade", cantor: "Legião Urbana", ano: 1996, nota: 9.5},
@@ -44,24 +32,54 @@ const albuns = [
 {nome: "Zé Ramalho", cantor: "Zé Ramalho", ano: 1978, nota: 9}
 ];
 
-function unicos(list, camp){
+const cantores = [
+    {nome: "Vinícius de Moraes", estilo: "MPB"},
+    {nome: "Rita Lee", estilo: "Rock"},
+    {nome: "Marisa monte", estilo: "MPB"},
+    {nome: "Legião Urbana", estilo: "Rock"},
+    {nome: "Titãs", estilo: "Rock"},
+    {nome: "Roupa Nova", estilo: "Pop rock"},
+    {nome: "Thiago Iorc", estilo: "Nova MPB"},
+    {nome: "Skank", estilo: "Pop rock"}
+];
 
-    let obj = [];
+// Exercise 01 (destructuring assignment)
 
-    list.forEach(element => {
-        const {[camp]: value} = element
-        obj.includes(value)?null:obj.push(value)
-    });
+let a = 10;
+let b = 20;
 
-    return obj
+[a,b] = [b,a];
+
+console.log(a);
+console.log(b);
+
+// Exercise 02 (destructuring assignment)
+
+/*
+for (const album of albuns) {
+    //Usamos as aspas invertidas para permitir 
+    //concatenar variáveis com ${variável}
+    console.log(`${album.nome} (${album.cantor}, ${album.ano})`);
+}
+*/
+
+/*
+for (const album of albuns) {
+    const {nome, cantor, ano} = album;
+    console.log(`${nome} (${cantor}, ${ano})`);
+}
+*/
+
+for (const {nome, cantor, ano} of albuns) {
+    console.log(`${nome} (${cantor}, ${ano})`);
 }
 
-const cantores = unicos(albuns, 'cantor');
+// Exercise 03 (destructuring assignment)
 
-function collatz(num){
-
-    while (num !== 0){
-        console.log(num)
-        num = num % 0 === 0 ? num / 2 : (3 * num + 1);
-    }
+const contador = {};
+for (const {cantor} of albuns) {
+    // Se o cantor já estiver no contador, incrementa a contagem; caso contrário, inicializa a contagem como 1
+    contador[cantor] = (contador[cantor] || 0) + 1;
 }
+
+console.log(contador);
