@@ -194,10 +194,8 @@ const fixar = (f, ...args) => {
     };
 };
 
-const somar = (a, b) => a + b;
-
 // Fixar a função somar com o primeiro argumento fixo sendo 5
-const somarCom5 = fixar(somar, 5);
+const somarCom5 = fixar(soma, 5);
 
 console.log(somarCom5(3)); // Retorna 8, pois 5 + 3 = 8
 console.log(somarCom5(10)); // Retorna 15, pois 5 + 10 = 15
