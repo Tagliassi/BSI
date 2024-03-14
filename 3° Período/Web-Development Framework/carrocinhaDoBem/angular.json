@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WebFrameworkApp": {
+    "carrocinhaDoBem": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/web-framework-app",
+            "outputPath": "dist/carrocinha-do-bem",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -35,18 +35,9 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -76,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "WebFrameworkApp:build:production"
+              "buildTarget": "carrocinhaDoBem:build:production"
             },
             "development": {
-              "buildTarget": "WebFrameworkApp:build:development"
+              "buildTarget": "carrocinhaDoBem:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "WebFrameworkApp:build"
+            "buildTarget": "carrocinhaDoBem:build"
           }
         },
         "test": {
@@ -112,6 +103,6 @@
     }
   },
   "cli": {
-    "analytics": "d8faa57d-770e-41ce-8de7-26d1f25a1a1b"
+    "analytics": false
   }
 }
