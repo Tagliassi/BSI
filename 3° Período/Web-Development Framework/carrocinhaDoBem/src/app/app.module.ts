@@ -3,20 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FooterBarComponent } from './footer-bar/footer-bar.component';
+import { RegisterPetsComponent } from './register-pets/register-pets.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavComponent,
-    FooterComponent
+    HomePageComponent,
+    NavBarComponent,
+    FooterBarComponent,
+    RegisterPetsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
