@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { IAnimal } from '../interfaces/animal';
 
 
 @Injectable({
@@ -13,22 +14,11 @@ export class PetsServiceService {
 
   constructor(private http: HttpClient) { }
 
-  /*
-  getPets(): Observable<any> {
-    return this.http.get<any>(`${this.apiURL}`)
-    .subscribe({
-      next: res=>{
-        console.log(res)
-      },
-      error(err) {
-          console.log(err)
-      },
-    });
+  getAnimals(): Observable<any> {
+    return this.http.get<any>(`${this.apiURL}`);
   }
 
-  insertPet(animal: IAnimal): Observable<any> {
-    return this.http.post(`${apiUrl}`, animal);
-
-
-  */
+  insertAnimal(animal: IAnimal): Observable<any> {
+    return this.http.post(`${this.apiURL}`, animal);
+  }
 }

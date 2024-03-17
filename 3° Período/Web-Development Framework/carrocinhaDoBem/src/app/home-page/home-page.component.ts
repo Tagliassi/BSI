@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsServiceService } from '../services/pets-service.service';
+import { IAnimal } from '../interfaces/animal';
 
 @Component({
   selector: 'app-home-page',
@@ -9,13 +10,21 @@ import { PetsServiceService } from '../services/pets-service.service';
 
 export class HomePageComponent implements OnInit {
 
+  public animals: IAnimal[] = [];
+
   constructor(public service: PetsServiceService){
 
   }
 
   ngOnInit(): void {
-    //this.service.getPets();
-    throw new Error('Method not implemented.');
+    this.getAnimals();
   }
 
+  getAnimals(){
+    this.service.getAnimals().subscribe((response) => {
+      this.animals = response;
+    }, (error) => {
+      console.error(error);
+    })
+  }
 }

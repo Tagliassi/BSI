@@ -1,27 +1,23 @@
-<body>
-  <div class="container mt-5">
-      <div class="row justify-content-center">
-          <div class="col-md-6">
-              <h2>Cadastro de Pets</h2>
-              <form>
-                  <div class="form-group">
-                      <label for="nome">Nome:</label>
-                      <input type="text" class="form-control" id="nome" formControlName="nome">
-                  </div>
-                  <div class="form-group">
-                      <label for="especie">Espécie:</label>
-                      <input type="text" class="form-control" id="especie" formControlName="especie">
-                  </div>
-                  <div class="form-group">
-                      <label for="idade">Idade:</label>
-                      <input type="number" class="form-control" id="idade" formControlName="idade">
-                  </div>
-                  <div class="form-group">
-                      <label for="descricao">Descrição:</label>
-                      <textarea class="form-control" id="descricao" formControlName="descricao" rows="3"></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Cadastrar</button>
-              </form>
-          </div>
-      </div>
+<div class="container">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-6">
+      <form [formGroup]="formPet" (ngSubmit)="adicionar()" class="row">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome do Animal: </label>
+          <input type="text" formControlName="nome" class="form-control" id="nome">
+        </div>
+        <div class="mb-3">
+          <label for="porte" class="form-label">Porte: </label>
+          <input type="text" formControlName="porte" class="form-control" id="porte">
+        </div>
+        <div class="mb-3">
+          <label for="descricao" class="form-label">Descrição: </label>
+          <textarea formControlName="descricao" class="form-control" id="descricao"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary mt-3">Adicionar</button>
+        </div>
+      </form>
+    </div>
   </div>
+</div>

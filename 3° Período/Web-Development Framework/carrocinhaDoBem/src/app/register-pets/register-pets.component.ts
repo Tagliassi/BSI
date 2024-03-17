@@ -1,21 +1,34 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {PetsServiceService} from '../services/pets-service.service';
+import {IAnimal} from '../interfaces/animal';
 
 @Component({
   selector: 'app-register-pets',
-  templateUrl: './register-pets.component.html',
-  styles: ``
+  templateUrl: './register-pets.component.html'
 })
 
 export class RegisterPetsComponent implements OnInit {
+  formPet: FormGroup;
 
-  constructor(){
-
+  constructor(private formBuilder: FormBuilder,
+              private service: PetsServiceService) {
+    this.formPet = this.formBuilder.group({});
   }
 
   ngOnInit(): void {
-    //this.service.insertPet();
-    throw new Error('Method not implemented.');
+    this.formPet = this.formBuilder.group({
+      nome: ['', [Validators.required]],
+      porte: ['', [Validators.required]],
+      descricao: ['', [Validators.required]]
+    });
   }
 
+  adicionar() {
+    const animal: IAnimal = this.formPet.getRawValue() as IAnimal;
+
+    this.service.insertAnimal(animal).subscribe((response) => {
+      console.log("resposta da API", response);
+    });
+  }
 }
