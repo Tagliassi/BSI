@@ -1,3 +1,4 @@
+import getpass
 import pyrebase
 
 firebaseConfig = {
@@ -12,8 +13,18 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 
 auth = firebase.auth()
+db = firebase.dataBase()
 
-token = auth.sign_in_with_email_and_password("rafael.galafassi2005@gmail.com", "rafa1234!")
+username = input("Digite o seu usuario: ")
+password = getpass.getpass("Digite sua senha: ")
 
-for k, v in auth.get_account_Info(token["idToken"]).items():
-    print(k,v)
+token = auth.sign_in_with_email_and_password("username", "password")
+
+#print(token)
+
+
+try:
+    token = auth.sign_in_with_email_and_password(username,password)
+except Exception as e:
+    print(e)
+    print("Login ou senha inválida")
