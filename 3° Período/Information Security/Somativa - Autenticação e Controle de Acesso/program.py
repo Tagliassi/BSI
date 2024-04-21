@@ -67,6 +67,7 @@ def verificar_acesso(permissoes, usuario):
     print("3. Excluir arquivo")
     print("4. Sair")
 
+    # Problema ao ler as permissões do user
     while True:
         opcao = input("\nDigite uma opção: ")
 
