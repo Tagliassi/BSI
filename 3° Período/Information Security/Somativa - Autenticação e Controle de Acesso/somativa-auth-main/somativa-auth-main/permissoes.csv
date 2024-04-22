@@ -1,0 +1,3 @@
+arquivo1,usuario1:ler;escrever,usuario2:escrever,admin:apagar
+arquivo2,usuario2:ler,admin:escrever,admin:apagar
+arquivo3,usuario3:ler,usuario3:escrever,admin:apagar
