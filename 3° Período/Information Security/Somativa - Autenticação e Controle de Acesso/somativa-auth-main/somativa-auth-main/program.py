@@ -1,13 +1,14 @@
-# Rafael Galafassi & Marcos Vinicius
-
+# Importa o módulo csv para lidar com arquivos CSV e a função getpass para ocultar a entrada de senha no terminal.
 import csv
 from getpass import getpass
 
+# Função para ler os usuários do arquivo CSV e retorná-los como um dicionário.
 def ler_usuarios():
     with open("usuarios.csv", newline='', encoding='utf-8') as arquivo:
         leitor = csv.reader(arquivo)
         return {row[0]: row[1] for row in leitor}
 
+# Função para ler as permissões dos arquivos do arquivo CSV e retorná-las como um dicionário de listas.
 def ler_permissoes():
     with open("permissoes.csv", newline='', encoding='utf-8') as arquivo:
         leitor = csv.reader(arquivo)
@@ -17,11 +18,13 @@ def ler_permissoes():
                 permissoes[row[0]] = row[1:]
         return permissoes
 
+# Função para adicionar um novo usuário ao arquivo CSV de usuários.
 def adicionar_usuario(login, senha):
     with open("usuarios.csv", "a", newline='', encoding='utf-8') as arquivo:
         escritor = csv.writer(arquivo)
         escritor.writerow([login, senha])
 
+# Função para autenticar um usuário verificando seu nome de usuário e senha.
 def verificar_autenticacao():
     tentativas_incorretas = 0
     usuario_bloqueado = False
@@ -62,8 +65,8 @@ def verificar_autenticacao():
         else:
             print("Opção inválida. Por favor, escolha uma opção válida.")
 
+# Função para verificar o acesso do usuário aos arquivos com base em suas permissões.
 def verificar_acesso(permissoes, usuario):
-    # Problema ao ler as permissões do user
     while True:
         print("\nComandos disponíveis:")
         print("1. Ler arquivo")
@@ -102,7 +105,7 @@ def verificar_acesso(permissoes, usuario):
                         print("-------------------------------")
                     else:
                         print("-------------------------------")
-                        print("Acesso negado. Você não tem permissão para excluir este arquivo.")
+                        print("Acesso negado. Você não tem permissão para esta operação no arquivo.")
                         print("-------------------------------")
                     break
                 else:
@@ -118,6 +121,7 @@ def verificar_acesso(permissoes, usuario):
             print("Opção inválida. Por favor, escolha uma opção válida.")
             print("-------------------------------")
 
+# Função principal que controla o fluxo do programa.
 def main():
     permissoes = ler_permissoes()
 
