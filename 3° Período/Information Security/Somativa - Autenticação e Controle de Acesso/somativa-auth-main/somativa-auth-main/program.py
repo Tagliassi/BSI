@@ -1,3 +1,5 @@
+# Rafael Galafassi & Marcos Vinicius
+
 # Importa o módulo csv para lidar com arquivos CSV e a função getpass para ocultar a entrada de senha no terminal.
 import csv
 from getpass import getpass
@@ -19,10 +21,16 @@ def ler_permissoes():
         return permissoes
 
 # Função para adicionar um novo usuário ao arquivo CSV de usuários.
-def adicionar_usuario(login, senha):
+def adicionar_usuario(login, senha, permissoes_padrao):
+    # Adiciona o usuário ao arquivo de usuários
     with open("usuarios.csv", "a", newline='', encoding='utf-8') as arquivo:
         escritor = csv.writer(arquivo)
         escritor.writerow([login, senha])
+
+    # Adiciona as permissões padrão do novo usuário ao arquivo de permissões
+    with open("permissoes.csv", "a", newline='', encoding='utf-8') as arquivo_permissoes:
+        escritor_permissoes = csv.writer(arquivo_permissoes)
+        escritor_permissoes.writerow([login] + permissoes_padrao)
 
 # Função para autenticar um usuário verificando seu nome de usuário e senha.
 def verificar_autenticacao():
@@ -44,7 +52,9 @@ def verificar_autenticacao():
         if opcao == "1":
             novo_login = input("Digite o novo nome de usuário: ")
             nova_senha = getpass("Digite a senha para o novo usuário: ")
-            adicionar_usuario(novo_login, nova_senha)
+            # Define suas permissões padrão aqui
+            permissoes_padrao = ["ler", "escrever"]
+            adicionar_usuario(novo_login, nova_senha, permissoes_padrao)
             print(f"\nUsuário {novo_login} cadastrado com sucesso!\n")
         elif opcao == "2":
             login = input("Digite seu nome de usuário: ")
