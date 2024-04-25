@@ -19,7 +19,7 @@ def ler_permissoes():
             if len(row) >= 2:
                 permissoes[row[0]] = row[1:]
         return permissoes
-
+    
 # Função para adicionar um novo usuário ao arquivo CSV de usuários.
 def adicionar_usuario(login, senha, permissoes_padrao):
     # Adiciona o usuário ao arquivo de usuários
@@ -28,9 +28,21 @@ def adicionar_usuario(login, senha, permissoes_padrao):
         escritor.writerow([login, senha])
 
     # Adiciona as permissões padrão do novo usuário ao arquivo de permissões
-    with open("permissoes.csv", "a", newline='', encoding='utf-8') as arquivo_permissoes:
+    with open("permissoes.csv", "r+", newline='', encoding='utf-8') as arquivo_permissoes:
+        leitor_permissoes = csv.reader(arquivo_permissoes)
+        linhas_permissoes = list(leitor_permissoes)
+
+        # Atualiza as permissões existentes com as permissões padrão do novo usuário
+        for i, linha in enumerate(linhas_permissoes):
+            arquivo, *permissoes = linha
+            if arquivo != "":
+                permissoes.extend([f"{login}:{permissao}" for permissao in permissoes_padrao])
+                linhas_permissoes[i] = [arquivo] + permissoes
+
+        # Retorna ao início do arquivo e reescreve todas as linhas com as atualizações
+        arquivo_permissoes.seek(0)
         escritor_permissoes = csv.writer(arquivo_permissoes)
-        escritor_permissoes.writerow([login] + permissoes_padrao)
+        escritor_permissoes.writerows(linhas_permissoes)
 
 # Função para autenticar um usuário verificando seu nome de usuário e senha.
 def verificar_autenticacao():
