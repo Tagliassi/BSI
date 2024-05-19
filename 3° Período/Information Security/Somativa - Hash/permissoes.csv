@@ -1,3 +1,3 @@
-arquivo1,usuario1:ler;escrever,usuario2:escrever,admin:apagar,teste2:ler,teste2:escrever,teste3:ler,teste3:escrever,rafa:ler,rafa:escrever,marco:ler,marco:escrever,vini:ler,vini:escrever,pedro:ler,pedro:escrever,cristina:ler,cristina:escrever,teste:ler,teste:escrever
-arquivo2,usuario2:ler,admin:escrever,admin:apagar,teste2:ler,teste2:escrever,teste3:ler,teste3:escrever,rafa:ler,rafa:escrever,marco:ler,marco:escrever,vini:ler,vini:escrever,pedro:ler,pedro:escrever,cristina:ler,cristina:escrever,teste:ler,teste:escrever
-arquivo3,usuario3:ler,usuario3:escrever,admin:apagar,teste2:ler,teste2:escrever,teste3:ler,teste3:escrever,rafa:ler,rafa:escrever,marco:ler,marco:escrever,vini:ler,vini:escrever,pedro:ler,pedro:escrever,cristina:ler,cristina:escrever,teste:ler,teste:escrever
+arquivo1,user1:ler;escrever,user2:escrever,admin:apagar,user4:ler,user4:escrever,rafael:ler,rafael:escrever
+arquivo2,user2:ler,admin:escrever,admin:apagar,user4:ler,user4:escrever,rafael:ler,rafael:escrever
+arquivo3,user3:ler,user3:escrever,admin:apagar,user4:ler,user4:escrever,rafael:ler,rafael:escrever

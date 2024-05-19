@@ -1,3 +1,5 @@
+# Rafael Galafassi & Marcos Vinicius
+
 import hashlib
 import csv
 import itertools
@@ -65,5 +67,5 @@ def main():
     print(f"Tempo total para quebrar os hashes de 4 usuários: {total_tempo} segundos")
     print(f"Tempo médio por senha: {total_tempo / 4} segundos")
 
-if __name__ == "__main__":
-    main()
+
+main()
