@@ -1,0 +1,15 @@
+• DDL – Data Definition Language
+    - Composed of Create, Alter, and Drop commands
+    - Responsible for shaping the database
+
+• DML – Data Manipulation Language
+    - Composed of Select, Insert, Delete, and Update commands
+    - Responsible for manipulating data by adding, modifying, deleting, and querying
+
+• DCL – Data Control Language
+    - Subset of DML, composed of Grant and Revoke commands
+    - Responsible for controlling user access to data.
+
+The data model is graphically represented by an Entity-Relationship Diagram (ERD).
+Notation: Created by Peter Chen in 1976
+Used notation: Heuser

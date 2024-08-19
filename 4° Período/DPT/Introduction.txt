@@ -1,0 +1,25 @@
+Course: Database Performance Tuning
+
+Semester: 4th
+Program: Information Systems
+
+--------------------------------------------------
+
+Database Performance Tuning Review
+
+Introduction:
+In this review, we will explore the concepts and techniques related to database performance tuning. 
+This course focuses on optimizing the performance of database systems to ensure efficient data retrieval and processing. 
+We will cover various topics such as indexing, query optimization, caching, and database monitoring.
+
+--------------------------------------------------
+
+The Database Performance Tuning course is designed for 4th semester Information Systems students with a basic knowledge of SQL. 
+It covers optimization techniques for SQL and NoSQL databases, as well as Business Intelligence concepts. 
+The course focuses on ensuring efficient and fast data access and manipulation through topics such as index structure, efficient design, performance monitoring, and query optimization. 
+Students learn tuning strategies for relational and non-relational databases, including query optimization, memory management, and server configuration. 
+Backup and recovery practices are also covered to ensure data security and integrity. 
+By the end of the course, students will be able to apply advanced tuning techniques, propose consistent interventions to improve performance, and use monitoring and analysis tools to diagnose and resolve performance issues. 
+They will also be capable of integrating and visualizing processed data for decision-making and business intelligence support.
+
+--------------------------------------------------
